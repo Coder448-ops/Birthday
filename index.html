@@ -920,7 +920,7 @@ input[type="range"].music-range::-moz-range-track{ height:6px; border-radius:999
   </div>
 </section>
 
-<!-- FAMILY PROFILE MODAL (single reusable dynamic modal) -->
+<!-- FAMILY PROFILE MODAL -->
 <div class="family-modal-overlay" id="familyModalOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Oila a'zosi profili">
   <div class="family-modal">
     <button class="family-modal-close" id="familyModalClose" aria-label="Yopish">✕</button>
@@ -938,7 +938,7 @@ input[type="range"].music-range::-moz-range-track{ height:6px; border-radius:999
   </div>
 </div>
 
-<!-- Family inner photo lightbox (scoped to selected family member's photos) -->
+<!-- Family inner photo lightbox -->
 <div class="family-lightbox" id="familyLightbox">
   <button class="lb-close" id="familyLbClose" aria-label="Yopish"><svg fill="none" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
   <button class="lb-btn lb-prev" id="familyLbPrev" aria-label="Oldingi"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
@@ -1005,7 +1005,7 @@ input[type="range"].music-range::-moz-range-track{ height:6px; border-radius:999
   </div>
 </div>
 
-<!-- Confirmation modal for destructive/reset actions -->
+<!-- Confirmation modal -->
 <div class="confirm-overlay" id="confirmOverlay" aria-hidden="true">
   <div class="confirm-box" role="alertdialog" aria-modal="true">
     <p id="confirmMessage"></p>
@@ -1180,7 +1180,7 @@ function getDefaultData(){
 }
 
 /* ============================================================
-   FAMILY MEMBER NORMALIZATION (handles legacy single-image data)
+   FAMILY MEMBER NORMALIZATION
    ============================================================ */
 function normalizeFamilyMember(m){
   const base = {
@@ -1207,16 +1207,16 @@ function normalizeFamilyMember(m){
 }
 
 /* ============================================================
-   LOAD / SAVE — JSONBin API (no localStorage for site data)
+   LOAD / SAVE — JSONBin API
    ============================================================ */
 const JSONBIN_BIN_ID = '6a85cccff5f4af5e29292f07';
-const JSONBIN_ACCESS_KEY = '$2a$10$1nvuhzkSOZ5kMyALv3IIge5L5CdO4X8CQI7gpkm1190od4p4kNPuq';
+const JSONBIN_MASTER_KEY = '$2a$10$92nUVIs5nav.EBE5HY4MXuDqKmzURGhG5uD4BhssRDHyxAm1w2IB6';
 
 async function loadData(){
   const defaults = getDefaultData();
   try{
     const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`, {
-      headers: { 'X-Access-Key': JSONBIN_ACCESS_KEY }
+      headers: { 'X-Master-Key': JSONBIN_MASTER_KEY }
     });
     if (!response.ok) throw new Error('Server xatosi');
     const json = await response.json();
@@ -1241,7 +1241,7 @@ async function trySaveData(data){
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'X-Access-Key': JSONBIN_ACCESS_KEY
+        'X-Master-Key': JSONBIN_MASTER_KEY
       },
       body: JSON.stringify(data)
     });
@@ -1351,7 +1351,7 @@ function deleteMusicBlob(){
 }
 
 /* ============================================================
-   MUSIQA — PLAYBACK ENGINE (single shared Audio element)
+   MUSIQA — PLAYBACK ENGINE
    ============================================================ */
 let musicSettings = loadMusicSettings();
 let musicAudioEl = null;
@@ -1517,7 +1517,7 @@ async function deleteMusicTrack(){
 }
 
 /* ============================================================
-   MUSIQA — PUBLIC UI (floating control, now-playing, welcome modal)
+   MUSIQA — PUBLIC UI
    ============================================================ */
 function updateFloatingMusicControlUI(){
   const floatingBtn = document.getElementById('floatingMusicBtn');
@@ -1625,7 +1625,7 @@ if(floatingMusicBtn){
 /* ============================================================
    GLOBAL STATE
    ============================================================ */
-let siteData = getDefaultData(); // will be replaced after async load
+let siteData = getDefaultData();
 let draftData = null;
 let dirty = false;
 let activeAdminTab = 'profile';
@@ -1642,7 +1642,7 @@ let familyLightboxIsOpen = false;
 let familyLightboxIndex = 0;
 
 /* ============================================================
-   BODY SCROLL LOCK MANAGEMENT (shared across all overlays)
+   BODY SCROLL LOCK MANAGEMENT
    ============================================================ */
 function isAnyOverlayOpen(){
   return adminIsOpen || familyModalIsOpen || familyLightboxIsOpen || lightboxIsOpen || musicWelcomeIsOpen ||
@@ -1863,7 +1863,7 @@ function showToast(msg, type){
 }
 
 /* ============================================================
-   CONFIRMATION MODAL (generic)
+   CONFIRMATION MODAL
    ============================================================ */
 const confirmOverlay = document.getElementById('confirmOverlay');
 const confirmMessageEl = document.getElementById('confirmMessage');
@@ -2006,7 +2006,6 @@ function tplAdminGallery(){
   `;
 }
 
-/* ---------- Family admin: single member card (supports many photos) ---------- */
 function tplFamilyMemberAdmin(m){
   return `
     <div class="admin-family-card" data-member-id="${m.id}">
@@ -2093,7 +2092,6 @@ function tplAdminTimeline(){
   `;
 }
 
-/* ---------- Musiqa (background music) admin tab ---------- */
 function tplAdminMusic(){
   const m = musicSettings;
   const hasTrack = !!m.hasTrack;
@@ -2251,7 +2249,7 @@ adminTabsEl.addEventListener('click', (e) => {
 });
 
 /* ============================================================
-   ADMIN — SAVE / RESET (async with API)
+   ADMIN — SAVE / RESET
    ============================================================ */
 document.getElementById('adminSaveBtn').addEventListener('click', async () => {
   const candidate = deepClone(draftData);
@@ -2283,7 +2281,7 @@ document.getElementById('adminResetBtn').addEventListener('click', () => {
 });
 
 /* ============================================================
-   ADMIN — MULTIPLE FAMILY PHOTO PROCESSING (sequential, safe)
+   ADMIN — MULTIPLE FAMILY PHOTO PROCESSING
    ============================================================ */
 async function handleMultipleFamilyPhotos(files, memberId){
   const member = draftData.family.find(f => f.id === memberId);
@@ -2297,7 +2295,7 @@ async function handleMultipleFamilyPhotos(files, memberId){
       if(!member.coverPhotoId) member.coverPhotoId = photoId;
       addedCount++;
     }catch(e){
-      /* skip invalid files silently, continue with remaining */
+      /* skip invalid files */
     }
   }
   if(addedCount){
@@ -2311,7 +2309,7 @@ async function handleMultipleFamilyPhotos(files, memberId){
 }
 
 /* ============================================================
-   ADMIN — EVENT DELEGATION (attached once, avoids duplicate listeners)
+   ADMIN — EVENT DELEGATION
    ============================================================ */
 adminContent.addEventListener('input', (e) => {
   const el = e.target;
@@ -2580,7 +2578,7 @@ adminContent.addEventListener('click', (e) => {
 });
 
 /* ============================================================
-   FAMILY PROFILE MODAL (public, dynamic, reusable)
+   FAMILY PROFILE MODAL
    ============================================================ */
 const familyContainer = document.getElementById('familyContainer');
 const familyModalOverlay = document.getElementById('familyModalOverlay');
@@ -2689,7 +2687,7 @@ familyModalGallery.addEventListener('click', (e) => {
 });
 
 /* ============================================================
-   FAMILY INNER PHOTO LIGHTBOX (scoped to current member's photos)
+   FAMILY INNER PHOTO LIGHTBOX
    ============================================================ */
 const familyLightbox = document.getElementById('familyLightbox');
 const familyLightboxMedia = document.getElementById('familyLightboxMedia');
@@ -2753,7 +2751,7 @@ familyLightbox.addEventListener('touchend', (e) => {
 }, { passive: true });
 
 /* ============================================================
-   INITIAL RENDER — async load data from JSONBin
+   INITIAL RENDER
    ============================================================ */
 (async function init() {
   siteData = await loadData();
@@ -2898,7 +2896,6 @@ lightbox.addEventListener('touchend', (e) => {
 
 /* ============================================================
    GLOBAL KEYBOARD HANDLING
-   Priority for ESC: confirm > family-lightbox > admin > family-modal > gallery-lightbox
    ============================================================ */
 const ADMIN_CODE = 'admin26';
 let keyBuffer = '';
