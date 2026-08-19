@@ -1,0 +1,2952 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Tumajon Ollomova — 54 yosh | Shaxsiy sahifa</title>
+<meta name="description" content="Tumajon Ollomova — mehr, oila va go'zal xotiralar bilan bezalgan hayot.">
+
+<style>
+/* ============================================================
+   ROOT VARIABLES — THEME SYSTEM
+   ============================================================ */
+:root{
+  --cream: #faf6ef;
+  --cream-2: #f3ead9;
+  --beige: #ecdfc8;
+  --beige-2: #e3d3b3;
+  --gold: #c9a15f;
+  --gold-2: #e0bd7f;
+  --brown: #3c2a1e;
+  --brown-soft: #5c4530;
+  --text: #4a3626;
+  --text-soft: #7a6650;
+  --card-bg: rgba(255,255,255,0.55);
+  --card-border: rgba(201,161,95,0.35);
+  --shadow: 0 20px 50px rgba(90,60,20,0.12);
+  --shadow-soft: 0 10px 30px rgba(90,60,20,0.08);
+  --glass-blur: blur(16px);
+  --radius-lg: 32px;
+  --radius-md: 22px;
+  --radius-sm: 14px;
+  --transition: 0.45s cubic-bezier(.22,1,.36,1);
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --danger: #b3452f;
+}
+
+[data-theme="dark"]{
+  --cream: #17130f;
+  --cream-2: #1e1811;
+  --beige: #241d15;
+  --beige-2: #2c2318;
+  --gold: #d9b06f;
+  --gold-2: #e8c98d;
+  --brown: #f3e7d6;
+  --brown-soft: #e8d8bf;
+  --text: #e9dcc7;
+  --text-soft: #b8a789;
+  --card-bg: rgba(40,32,22,0.55);
+  --card-border: rgba(217,176,111,0.25);
+  --shadow: 0 20px 50px rgba(0,0,0,0.45);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.35);
+  --danger: #e0755a;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background var(--transition), color var(--transition);
+}
+img{ max-width:100%; display:block; }
+a{ text-decoration:none; color:inherit; }
+ul{ list-style:none; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; }
+h1,h2,h3,h4{ font-family: var(--font-display); color: var(--brown); }
+section{ position: relative; padding: 120px 6vw; }
+.section-inner{ max-width: 1200px; margin: 0 auto; }
+
+::-webkit-scrollbar{ width: 11px; }
+::-webkit-scrollbar-track{ background: var(--cream-2); }
+::-webkit-scrollbar-thumb{ background: linear-gradient(var(--gold), var(--gold-2)); border-radius: 10px; border: 2px solid var(--cream-2); }
+* { scrollbar-color: var(--gold) var(--cream-2); scrollbar-width: thin; }
+::selection{ background: var(--gold-2); color: var(--brown); }
+a:focus-visible, button:focus-visible{ outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 8px; }
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+#loader{
+  position: fixed; inset:0; z-index: 9999;
+  background: var(--cream);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  transition: opacity .7s ease, visibility .7s ease;
+  gap: 22px;
+}
+#loader.hide{ opacity:0; visibility:hidden; }
+.loader-ring{ width:64px; height:64px; border-radius:50%; border: 3px solid var(--beige-2); border-top-color: var(--gold); animation: spin 1s linear infinite; }
+.loader-text{ font-family: var(--font-display); color: var(--gold); letter-spacing: 4px; font-size: 14px; text-transform: uppercase; }
+@keyframes spin{ to{ transform: rotate(360deg); } }
+
+/* ============================================================
+   FLOATING DECORATIVE SHAPES
+   ============================================================ */
+.floaters{ position: fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.floater{ position:absolute; border-radius:50%; background: radial-gradient(circle at 30% 30%, var(--gold-2), transparent 70%); opacity: 0.25; filter: blur(4px); animation: floaty 14s ease-in-out infinite; }
+[data-theme="dark"] .floater{ opacity: 0.12; }
+@keyframes floaty{ 0%,100%{ transform: translateY(0) translateX(0) scale(1); } 50%{ transform: translateY(-40px) translateX(20px) scale(1.08); } }
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar{ position: fixed; top:0; left:0; right:0; z-index: 1000; display:flex; align-items:center; justify-content:space-between; padding: 18px 6vw; background: transparent; transition: background var(--transition), box-shadow var(--transition), padding var(--transition); }
+.navbar.scrolled{ background: var(--card-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-soft); padding: 12px 6vw; border-bottom: 1px solid var(--card-border); }
+.nav-logo{ font-family: var(--font-display); font-weight:700; font-size: 24px; color: var(--brown); letter-spacing: 1px; }
+.nav-logo span{ color: var(--gold); }
+.nav-links{ display:flex; gap: 34px; align-items:center; }
+.nav-links a{ position: relative; font-size: 15px; font-weight:500; color: var(--text); padding: 6px 2px; transition: color var(--transition); }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:-2px; width:0; height:2px; background: var(--gold); transition: width var(--transition); }
+.nav-links a:hover, .nav-links a.active{ color: var(--gold); }
+.nav-links a:hover::after, .nav-links a.active::after{ width:100%; }
+.nav-actions{ display:flex; align-items:center; gap: 14px; }
+.theme-toggle{ width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; background: var(--beige); border: 1px solid var(--card-border); transition: transform var(--transition), background var(--transition); }
+.theme-toggle:hover{ transform: rotate(20deg) scale(1.08); }
+.theme-toggle svg{ width:20px; height:20px; stroke: var(--gold); }
+.hamburger{ display:none; width:44px; height:44px; border-radius: 50%; align-items:center; justify-content:center; background: var(--beige); border: 1px solid var(--card-border); }
+.hamburger svg{ width:22px; height:22px; stroke: var(--brown); }
+.mobile-menu{ position: fixed; top:0; right:-100%; width: min(320px, 82vw); height:100vh; background: var(--cream); z-index: 1200; box-shadow: -10px 0 40px rgba(0,0,0,0.15); padding: 100px 34px; transition: right .5s cubic-bezier(.22,1,.36,1); display:flex; flex-direction:column; gap: 26px; }
+.mobile-menu.open{ right:0; }
+.mobile-menu a{ font-size: 18px; font-weight:500; color: var(--text); }
+.mobile-menu-close{ position:absolute; top: 26px; right: 26px; width:40px; height:40px; border-radius:50%; background: var(--beige); display:flex; align-items:center; justify-content:center; }
+.mobile-menu-close svg{ width:18px; height:18px; stroke: var(--brown); }
+.menu-overlay{ position: fixed; inset:0; background: rgba(20,14,8,0.4); z-index: 1100; opacity:0; visibility:hidden; transition: opacity var(--transition), visibility var(--transition); backdrop-filter: blur(3px); }
+.menu-overlay.show{ opacity:1; visibility:visible; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{ min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 140px 6vw 80px; position: relative; background: radial-gradient(circle at 15% 20%, var(--cream-2), var(--cream) 60%); overflow:hidden; }
+.hero-grid{ max-width: 1200px; width:100%; margin:0 auto; display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items:center; }
+.hero-text{ position: relative; z-index:2; }
+.hero-kicker{ display:inline-flex; align-items:center; gap:10px; font-size: 13px; letter-spacing: 3px; text-transform:uppercase; color: var(--gold); font-weight:600; margin-bottom: 22px; }
+.hero-kicker::before{ content:''; width: 34px; height:1px; background: var(--gold); }
+.hero-title{ font-size: clamp(42px, 6vw, 74px); font-weight:700; line-height:1.05; margin-bottom: 18px; color: var(--brown); }
+.hero-title em{ font-style: italic; color: var(--gold); }
+.hero-sub{ font-size: 20px; color: var(--text-soft); font-weight:500; margin-bottom: 20px; letter-spacing: 0.5px; }
+.hero-desc{ font-size: 17px; max-width: 480px; color: var(--text-soft); margin-bottom: 36px; font-style: italic; font-family: var(--font-display); }
+.hero-buttons{ display:flex; gap: 18px; flex-wrap:wrap; }
+.btn{ display:inline-flex; align-items:center; gap:10px; padding: 15px 32px; border-radius: 999px; font-size:15px; font-weight:600; transition: all var(--transition); border: 1px solid transparent; }
+.btn-primary{ background: linear-gradient(135deg, var(--gold), var(--gold-2)); color: #fff; box-shadow: 0 12px 30px rgba(201,161,95,0.4); }
+.btn-primary:hover{ transform: translateY(-4px); box-shadow: 0 16px 36px rgba(201,161,95,0.5); }
+.btn-outline{ background: transparent; border: 1px solid var(--gold); color: var(--brown); }
+.btn-outline:hover{ background: var(--gold); color:#fff; transform: translateY(-4px); }
+.hero-portrait-wrap{ display:flex; align-items:center; justify-content:center; position:relative; z-index:2; }
+.hero-portrait{ width: min(360px, 80vw); aspect-ratio: 1/1; border-radius: 50%; background: linear-gradient(145deg, var(--beige), var(--beige-2)); border: 6px solid var(--cream); box-shadow: var(--shadow), 0 0 0 2px var(--card-border); display:flex; align-items:center; justify-content:center; position: relative; overflow:hidden; animation: floatY 6s ease-in-out infinite; }
+@keyframes floatY{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-16px);} }
+.hero-portrait svg{ width:46%; height:46%; opacity:0.5; stroke: var(--gold); }
+.hero-portrait img{ width:100%; height:100%; object-fit:cover; }
+.hero-portrait .ring{ position:absolute; inset:-14px; border-radius:50%; border: 2px dashed var(--gold-2); opacity:0.5; animation: spin 24s linear infinite; pointer-events:none; }
+.portrait-label{ position:absolute; bottom: 6%; left:50%; transform: translateX(-50%); background: var(--card-bg); backdrop-filter: var(--glass-blur); padding: 8px 18px; border-radius: 999px; font-size:12px; border: 1px solid var(--card-border); color: var(--text-soft); white-space:nowrap; max-width: 88%; overflow:hidden; text-overflow:ellipsis; }
+.scroll-hint{ position:absolute; bottom: 30px; left:50%; transform: translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; color: var(--text-soft); font-size:12px; letter-spacing:2px; text-transform:uppercase; }
+.scroll-hint .mouse{ width:24px; height:38px; border:2px solid var(--gold); border-radius: 14px; position:relative; }
+.scroll-hint .mouse::before{ content:''; position:absolute; top:6px; left:50%; width:4px; height:8px; background: var(--gold); border-radius:2px; transform:translateX(-50%); animation: scrollDot 1.6s infinite; }
+@keyframes scrollDot{ 0%{ opacity:1; top:6px;} 100%{ opacity:0; top:20px;} }
+
+/* ============================================================
+   REVEAL ANIMATION
+   ============================================================ */
+.reveal{ opacity:0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible{ opacity:1; transform:translateY(0); }
+.reveal-delay-1{ transition-delay: .1s; } .reveal-delay-2{ transition-delay: .2s; } .reveal-delay-3{ transition-delay: .3s; } .reveal-delay-4{ transition-delay: .4s; }
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.section-header{ text-align:center; margin-bottom: 64px; }
+.section-kicker{ font-size:13px; letter-spacing:3px; text-transform:uppercase; color: var(--gold); font-weight:600; margin-bottom: 12px; display:block; }
+.section-title{ font-size: clamp(30px, 4vw, 46px); margin-bottom: 14px; }
+.section-line{ width: 70px; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-2)); margin: 0 auto; border-radius:4px; }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about{ background: var(--cream); }
+.about-content{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items:center; }
+.about-desc{ font-size:17px; color: var(--text-soft); margin-bottom: 26px; white-space: pre-line; }
+.info-cards{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.info-card{ background: var(--card-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 28px 18px; text-align:center; box-shadow: var(--shadow-soft); transition: transform var(--transition), box-shadow var(--transition); }
+.info-card:hover{ transform: translateY(-8px); box-shadow: var(--shadow); }
+.info-card .icon{ width:40px; height:40px; margin: 0 auto 14px; stroke: var(--gold); }
+.info-card .label{ font-size: 12px; text-transform:uppercase; letter-spacing:1.5px; color: var(--text-soft); margin-bottom:6px; }
+.info-card .value{ font-family: var(--font-display); font-size: 20px; color: var(--brown); font-weight:600; }
+.about-visual{ position:relative; border-radius: var(--radius-lg); background: linear-gradient(145deg, var(--beige), var(--beige-2)); min-height: 380px; display:flex; align-items:center; justify-content:center; box-shadow: var(--shadow-soft); overflow:hidden; }
+.about-visual svg{ width: 30%; opacity: 0.35; stroke: var(--gold); }
+.about-visual img{ width:100%; height:100%; object-fit:cover; }
+.about-visual::after{ content:'✦'; position:absolute; top:20px; right:26px; color: var(--gold); font-size:22px; opacity:0.6; z-index:2; }
+
+/* ============================================================
+   VALUES
+   ============================================================ */
+.values{ background: var(--cream-2); }
+.values-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap: 22px; }
+.value-card{ background: var(--card-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 36px 16px; text-align:center; transition: transform var(--transition), box-shadow var(--transition), background var(--transition); box-shadow: var(--shadow-soft); }
+.value-card:hover{ transform: translateY(-12px) scale(1.03); box-shadow: var(--shadow); background: linear-gradient(160deg, var(--card-bg), var(--beige-2)); }
+.value-emoji{ font-size: 40px; margin-bottom: 16px; display:inline-block; transition: transform var(--transition); }
+.value-card:hover .value-emoji{ transform: scale(1.2) rotate(-6deg); }
+.value-name{ font-family: var(--font-display); font-size:18px; font-weight:600; color: var(--brown); }
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gallery{ background: var(--cream); }
+.gallery-grid{ display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; gap: 18px; }
+.gallery-item{ position: relative; border-radius: var(--radius-md); overflow:hidden; cursor: pointer; box-shadow: var(--shadow-soft); transition: transform var(--transition), box-shadow var(--transition); }
+.gallery-item:nth-child(1){ grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(4){ grid-row: span 2; }
+.gallery-item:nth-child(6){ grid-column: span 2; }
+.gallery-photo{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; transition: transform .6s ease; background: linear-gradient(145deg, var(--beige), var(--beige-2)); }
+.gallery-item:hover{ box-shadow: var(--shadow); transform: translateY(-4px); }
+.gallery-item:hover .gallery-photo{ transform: scale(1.1); }
+.gallery-photo svg{ width: 32%; opacity:0.5; stroke: var(--gold-2); }
+.gallery-photo img{ width:100%; height:100%; object-fit:cover; }
+.gallery-overlay{ position:absolute; inset:0; background: linear-gradient(180deg, transparent 40%, rgba(30,20,10,0.75)); display:flex; align-items:flex-end; padding: 16px; opacity:0; transition: opacity var(--transition); }
+.gallery-item:hover .gallery-overlay{ opacity:1; }
+.gallery-overlay span{ color:#fff; font-size:14px; font-weight:500; }
+
+/* Main gallery lightbox */
+.lightbox{ position: fixed; inset:0; background: rgba(15,10,5,0.94); z-index: 2000; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition: opacity .4s ease, visibility .4s ease; }
+.lightbox.open{ opacity:1; visibility:visible; }
+.lightbox-content{ max-width: 80vw; max-height: 80vh; width: 500px; aspect-ratio: 4/3; border-radius: var(--radius-md); overflow:hidden; position:relative; display:flex; align-items:center; justify-content:center; background: linear-gradient(145deg, var(--beige), var(--beige-2)); box-shadow: 0 30px 80px rgba(0,0,0,0.5); animation: lightboxIn .4s ease; }
+@keyframes lightboxIn{ from{ transform: scale(0.85); opacity:0;} to{ transform:scale(1); opacity:1;} }
+#lightboxMedia, #familyLightboxMedia{ width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+#lightboxMedia svg, #familyLightboxMedia svg{ width:24%; opacity:0.45; stroke: var(--gold); }
+#lightboxMedia img, #familyLightboxMedia img{ width:100%; height:100%; object-fit:cover; }
+.lightbox-caption{ position:absolute; bottom: 18px; left:50%; transform: translateX(-50%); color:#fff; font-size:14px; background: rgba(0,0,0,0.4); padding: 6px 16px; border-radius: 999px; max-width:80%; text-align:center; }
+.lb-btn{ position:absolute; top:50%; transform: translateY(-50%); width:52px; height:52px; border-radius:50%; background: rgba(255,255,255,0.12); backdrop-filter: blur(6px); display:flex; align-items:center; justify-content:center; transition: background var(--transition), transform var(--transition); }
+.lb-btn:hover{ background: var(--gold); transform: translateY(-50%) scale(1.1); }
+.lb-btn svg{ width:22px; height:22px; stroke:#fff; }
+.lb-prev{ left: 3%; } .lb-next{ right:3%; }
+.lb-close{ position:absolute; top: 26px; right: 3%; width:46px; height:46px; border-radius:50%; background: rgba(255,255,255,0.12); backdrop-filter: blur(6px); display:flex; align-items:center; justify-content:center; transition: background var(--transition), transform var(--transition); }
+.lb-close:hover{ background: var(--gold); transform: rotate(90deg); }
+.lb-close svg{ width:20px; height:20px; stroke:#fff; }
+
+/* ============================================================
+   FAMILY
+   ============================================================ */
+.family{ background: var(--cream-2); }
+.family-featured-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 26px; margin-bottom: 20px; }
+.family-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+.family-group-title{ text-align:center; font-size: 24px; margin: 46px 0 24px; }
+.family-card{ background: var(--card-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 36px 20px; text-align:center; box-shadow: var(--shadow-soft); transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); cursor:pointer; }
+.family-card:hover{ transform: translateY(-10px); box-shadow: var(--shadow); border-color: var(--gold); }
+.family-card-featured{ padding: 44px 24px; }
+.family-avatar{ width:84px; height:84px; border-radius:50%; margin: 0 auto 18px; background: linear-gradient(145deg, var(--beige), var(--beige-2)); display:flex; align-items:center; justify-content:center; border: 3px solid var(--cream); box-shadow: 0 0 0 2px var(--card-border); overflow:hidden; position:relative; }
+.family-card-featured .family-avatar{ width:100px; height:100px; }
+.family-avatar img{ width:100%; height:100%; object-fit:cover; }
+.family-avatar svg{ width:40%; opacity:0.55; stroke: var(--gold); }
+.family-photo-badge{ position:absolute; bottom:-2px; right:-2px; background: var(--gold); color:#fff; font-size:11px; font-weight:700; padding:2px 7px; border-radius:999px; border:2px solid var(--cream); }
+.family-name{ font-family: var(--font-display); font-size: 19px; color: var(--brown); font-weight:600; margin-bottom:6px; }
+.family-role{ font-size:13px; text-transform:uppercase; letter-spacing:1.5px; color: var(--gold); }
+.family-desc{ font-size:13px; color: var(--text-soft); margin-top:10px; line-height:1.5; }
+.family-card-hint{ font-size:11px; color: var(--gold); opacity:0; margin-top:10px; text-transform:uppercase; letter-spacing:1px; font-weight:600; transition: opacity var(--transition); }
+.family-card:hover .family-card-hint{ opacity:1; }
+
+/* ============================================================
+   FAMILY PROFILE MODAL
+   ============================================================ */
+.family-modal-overlay{
+  position: fixed; inset:0; z-index: 3000; background: rgba(20,14,8,0.55); backdrop-filter: blur(6px);
+  display:flex; align-items:center; justify-content:center; padding:24px;
+  opacity:0; visibility:hidden; transition: opacity .4s ease, visibility .4s ease;
+}
+.family-modal-overlay.open{ opacity:1; visibility:visible; }
+.family-modal{
+  width:100%; max-width: 980px; max-height: 88vh; background: var(--cream);
+  border-radius: var(--radius-lg); border:1px solid var(--card-border); box-shadow: var(--shadow);
+  position:relative; overflow:hidden; display:flex; flex-direction:column;
+  transform: scale(0.97); opacity:0; transition: transform .4s cubic-bezier(.22,1,.36,1), opacity .4s ease;
+}
+.family-modal-overlay.open .family-modal{ transform: scale(1); opacity:1; }
+.family-modal-close{
+  position:absolute; top:18px; right:18px; z-index:5; width:42px; height:42px; border-radius:50%;
+  background: var(--card-bg); backdrop-filter: var(--glass-blur); border:1px solid var(--card-border);
+  display:flex; align-items:center; justify-content:center; font-size:18px; color: var(--brown);
+  transition: all .3s;
+}
+.family-modal-close:hover{ background: var(--gold); color:#fff; transform: rotate(90deg); }
+.family-modal-scroll{ overflow-y:auto; padding: 50px 44px 40px; }
+.family-modal-header{ display:flex; gap:32px; align-items:flex-start; margin-bottom: 36px; flex-wrap:wrap; }
+.family-modal-cover{ width:170px; height:170px; border-radius:28px; overflow:hidden; flex-shrink:0; background: linear-gradient(145deg, var(--beige), var(--beige-2)); display:flex; align-items:center; justify-content:center; box-shadow: var(--shadow-soft); border:1px solid var(--card-border); }
+.family-modal-cover img{ width:100%; height:100%; object-fit:cover; }
+.family-modal-cover svg{ width:38%; opacity:0.4; stroke: var(--gold); }
+.family-modal-info{ flex:1; min-width:220px; }
+.family-modal-info h3{ font-size: 30px; margin-bottom: 16px; }
+.family-modal-tags{ display:flex; flex-direction:column; gap:10px; margin-bottom: 16px; }
+.family-modal-tag strong{ color: var(--gold); font-weight:700; text-transform:uppercase; letter-spacing:1px; font-size:11px; display:block; margin-bottom:2px; }
+.family-modal-tag{ font-size:14.5px; color: var(--text); }
+.family-modal-desc{ font-size:15px; color: var(--text-soft); line-height:1.7; font-style:italic; font-family: var(--font-display); }
+
+.family-modal-gallery{ display:grid; gap:14px; }
+.fg-1{ grid-template-columns: 1fr; }
+.fg-1 .fg-item{ aspect-ratio: 16/10; }
+.fg-2{ grid-template-columns: 1fr 1fr; }
+.fg-2 .fg-item{ aspect-ratio: 4/5; }
+.fg-3{ grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; }
+.fg-3 .fg-item:nth-child(1){ grid-row: span 2; }
+.fg-4{ grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.fg-4 .fg-item:nth-child(1){ grid-row: span 2; }
+.fg-many{ grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.fg-many .fg-item{ aspect-ratio: 1/1; }
+.fg-item{ position:relative; border-radius: 18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow-soft); transition: transform .4s ease; min-height: 90px; }
+.fg-item:hover{ transform: translateY(-4px); }
+.fg-item img{ width:100%; height:100%; object-fit:cover; transition: transform .5s ease; }
+.fg-item:hover img{ transform: scale(1.08); }
+.fg-item-caption{ position:absolute; inset:auto 0 0 0; background: linear-gradient(180deg, transparent, rgba(20,14,8,0.75)); color:#fff; font-size:12px; padding:16px 12px 10px; opacity:0; transition: opacity .3s; }
+.fg-item:hover .fg-item-caption{ opacity:1; }
+
+/* Family inner photo lightbox */
+.family-lightbox{ position:fixed; inset:0; background: rgba(10,7,4,0.97); z-index: 3500; display:flex; align-items:center; justify-content:center; opacity:0; visibility:hidden; transition: opacity .3s ease, visibility .3s ease; }
+.family-lightbox.open{ opacity:1; visibility:visible; }
+.family-lightbox-counter{ position:absolute; top:24px; left:50%; transform:translateX(-50%); color:#fff; font-size:13px; background:rgba(255,255,255,0.12); padding:6px 16px; border-radius:999px; }
+
+/* ============================================================
+   TIMELINE
+   ============================================================ */
+.timeline-section{ background: var(--cream); }
+.timeline{ position:relative; max-width: 900px; margin: 0 auto; }
+.timeline::before{ content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background: linear-gradient(var(--gold-2), var(--gold)); transform: translateX(-50%); }
+.tl-item{ position: relative; width:50%; padding: 0 50px 60px; }
+.tl-item:nth-child(odd){ left:0; text-align:right; }
+.tl-item:nth-child(even){ left:50%; text-align:left; }
+.tl-dot{ position:absolute; top: 6px; width:18px; height:18px; border-radius:50%; background: var(--gold); border: 4px solid var(--cream); box-shadow: 0 0 0 2px var(--gold-2); }
+.tl-item:nth-child(odd) .tl-dot{ right:-9px; }
+.tl-item:nth-child(even) .tl-dot{ left:-9px; }
+.tl-card{ background: var(--card-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 26px 28px; box-shadow: var(--shadow-soft); display:inline-block; transition: transform var(--transition), box-shadow var(--transition); }
+.tl-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow); }
+.tl-date{ font-size:12px; text-transform:uppercase; letter-spacing:1.5px; color: var(--gold); margin-bottom:8px; display:block; }
+.tl-title{ font-family: var(--font-display); font-size:20px; color: var(--brown); margin-bottom: 8px; }
+.tl-desc{ font-size:14px; color: var(--text-soft); }
+
+/* ============================================================
+   QUOTE
+   ============================================================ */
+.quote-section{ background: linear-gradient(135deg, var(--beige), var(--beige-2)); text-align:center; padding: 140px 6vw; position:relative; overflow:hidden; }
+.quote-mark{ font-family: var(--font-display); font-size: 90px; color: var(--gold); opacity:0.5; line-height:0.5; }
+.quote-text{ font-family: var(--font-display); font-style:italic; font-weight:500; font-size: clamp(24px, 3.4vw, 40px); max-width: 800px; margin: 20px auto 0; color: var(--brown); line-height:1.5; }
+.quote-section::before, .quote-section::after{ content:'✦'; position:absolute; color: var(--gold); opacity:0.3; font-size:30px; }
+.quote-section::before{ top: 40px; left: 8%; }
+.quote-section::after{ bottom: 40px; right: 8%; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{ text-align:center; padding: 40px 6vw; background: var(--cream-2); color: var(--text-soft); font-size:14px; border-top: 1px solid var(--card-border); }
+footer span{ color: var(--gold); }
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+.back-to-top{ position: fixed; bottom: 30px; right: 30px; width:52px; height:52px; border-radius:50%; background: linear-gradient(135deg, var(--gold), var(--gold-2)); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow: var(--shadow); z-index: 900; opacity:0; visibility:hidden; transform: translateY(20px); transition: all var(--transition); }
+.back-to-top.show{ opacity:1; visibility:visible; transform: translateY(0); }
+.back-to-top:hover{ transform: translateY(-6px) scale(1.06); }
+.back-to-top svg{ width:22px; height:22px; stroke:#fff; }
+
+/* ============================================================
+   ADMIN PANEL — hidden CMS overlay (only visible via admin26 shortcut)
+   ============================================================ */
+.admin-overlay{
+  position: fixed; inset:0; z-index: 5000;
+  background: rgba(20,14,8,0.55);
+  backdrop-filter: blur(6px);
+  display:flex; align-items:center; justify-content:center;
+  padding: 30px;
+  opacity:0; visibility:hidden;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+.admin-overlay.open{ opacity:1; visibility:visible; }
+.admin-panel{
+  width:100%; max-width: 1220px; height: 90vh; max-height: 880px;
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+  display:flex; flex-direction:column; overflow:hidden;
+  animation: lightboxIn .35s ease;
+}
+.admin-topbar{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding: 20px 28px; border-bottom: 1px solid var(--card-border);
+  background: var(--card-bg); backdrop-filter: var(--glass-blur);
+  flex-wrap: wrap;
+}
+.admin-title{ font-family: var(--font-display); font-size:22px; color: var(--brown); font-weight:700; }
+.admin-title span{ color: var(--gold); font-size:12px; letter-spacing:2px; text-transform:uppercase; display:block; font-family: var(--font-body); font-weight:600; margin-bottom:2px; }
+.admin-topbar-actions{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.admin-dirty{ font-size:12px; color: var(--gold); font-weight:600; background: var(--beige); padding:6px 12px; border-radius:999px; }
+.admin-close-btn{
+  width:38px; height:38px; border-radius:50%; background: var(--beige);
+  display:flex; align-items:center; justify-content:center; font-size:18px; color: var(--brown);
+  transition: transform var(--transition), background var(--transition); flex-shrink:0;
+}
+.admin-close-btn:hover{ background: var(--gold); color:#fff; transform: rotate(90deg); }
+
+.admin-body{ flex:1; display:flex; overflow:hidden; min-height:0; }
+.admin-tabs{
+  display:flex; flex-direction:column; gap:4px; width: 230px; flex-shrink:0;
+  padding: 18px 14px; border-right: 1px solid var(--card-border);
+  background: var(--cream-2); overflow-y:auto;
+}
+.admin-tab{
+  text-align:left; padding: 12px 16px; border-radius: 12px; font-size:14px; font-weight:600;
+  color: var(--text); transition: all .3s;
+}
+.admin-tab:hover{ background: var(--beige); }
+.admin-tab.active{ background: linear-gradient(135deg, var(--gold), var(--gold-2)); color:#fff; }
+
+.admin-content{ flex:1; overflow-y:auto; padding: 28px 32px; }
+
+.admin-section-title{ font-size:22px; margin-bottom: 22px; }
+.admin-section + .admin-section{ margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--card-border); }
+.admin-field{ margin-bottom: 18px; }
+.admin-field label{ display:block; font-size:12px; text-transform:uppercase; letter-spacing:1px; color: var(--text-soft); margin-bottom:6px; font-weight:600; }
+.admin-field input[type="text"], .admin-field textarea{ width:100%; }
+.admin-grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+input[type="text"], textarea, select{
+  width:100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--card-border);
+  background: var(--card-bg); color: var(--text); font-family: inherit; font-size: 14px;
+  transition: border-color .3s, box-shadow .3s;
+}
+input[type="text"]:focus, textarea:focus{ outline:none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,161,95,0.2); }
+textarea{ resize: vertical; min-height: 60px; line-height:1.5; }
+
+.admin-hint-text{ font-size:13px; color: var(--text-soft); margin-top:14px; }
+
+.admin-list{ display:flex; flex-direction:column; gap:16px; margin-bottom: 20px; }
+.admin-row{
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius-md); padding: 18px; display:flex; gap:16px; align-items:flex-start;
+}
+.admin-row-media{ align-items:flex-start; }
+.admin-row-fields{ flex:1; display:flex; flex-direction:column; gap:10px; min-width:0; }
+.admin-row-fields-inline{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.admin-row-actions{ display:flex; gap:8px; flex-shrink:0; }
+.admin-row-actions-vertical{ flex-direction:column; }
+
+.admin-emoji-input{ width:64px !important; flex-shrink:0; text-align:center; font-size:20px; }
+
+.admin-icon-btn{
+  width:34px; height:34px; border-radius:10px; background: var(--beige);
+  display:flex; align-items:center; justify-content:center; font-size:15px; color: var(--text);
+  transition: all .3s; flex-shrink:0;
+}
+.admin-icon-btn:hover{ background: var(--gold); color:#fff; }
+.admin-icon-btn-danger:hover{ background: var(--danger); color:#fff; }
+
+.admin-avatar-preview{
+  width:74px; height:74px; border-radius:14px; overflow:hidden; flex-shrink:0;
+  background: linear-gradient(145deg, var(--beige), var(--beige-2));
+  display:flex; align-items:center; justify-content:center; border:1px solid var(--card-border);
+}
+.admin-avatar-preview img{ width:100%; height:100%; object-fit:cover; }
+.admin-avatar-preview svg{ width:36%; opacity:0.4; stroke: var(--gold); }
+
+.admin-avatar-preview-lg{
+  width:150px; height:150px; border-radius:50%; overflow:hidden; flex-shrink:0;
+  background: linear-gradient(145deg, var(--beige), var(--beige-2));
+  display:flex; align-items:center; justify-content:center; border:3px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--card-border);
+}
+.admin-avatar-preview-lg img{ width:100%; height:100%; object-fit:cover; }
+.admin-avatar-preview-lg svg{ width:36%; opacity:0.4; stroke: var(--gold); }
+.admin-avatar-preview-rect{
+  width:180px; height:120px; border-radius:16px; overflow:hidden; flex-shrink:0;
+  background: linear-gradient(145deg, var(--beige), var(--beige-2));
+  display:flex; align-items:center; justify-content:center; border:1px solid var(--card-border);
+}
+.admin-avatar-preview-rect img{ width:100%; height:100%; object-fit:cover; }
+.admin-avatar-preview-rect svg{ width:30%; opacity:0.4; stroke: var(--gold); }
+.admin-portrait-row{ display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+.admin-portrait-actions{ display:flex; flex-direction:column; gap:12px; }
+
+.admin-btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding: 12px 22px; border-radius: 999px; font-size:14px; font-weight:600;
+  transition: all .3s; white-space:nowrap;
+}
+.admin-btn-small{ padding: 8px 16px; font-size:12.5px; }
+.admin-btn-primary{ background: linear-gradient(135deg, var(--gold), var(--gold-2)); color:#fff; box-shadow: 0 8px 22px rgba(201,161,95,0.35); }
+.admin-btn-primary:hover{ transform: translateY(-2px); }
+.admin-btn-outline{ background: transparent; border: 1px solid var(--card-border); color: var(--text); }
+.admin-btn-outline:hover{ border-color: var(--gold); color: var(--gold); }
+.admin-upload-label{ cursor:pointer; }
+
+.admin-add-btn{
+  width:100%; padding: 14px; border-radius: 14px; border: 2px dashed var(--gold);
+  color: var(--gold); font-weight:600; transition: all .3s; text-align:center; background:transparent;
+}
+.admin-add-btn:hover{ background: var(--gold); color:#fff; }
+
+/* Multi-photo family admin card */
+.admin-family-card{ background: var(--card-bg); border:1px solid var(--card-border); border-radius: var(--radius-md); padding:20px; }
+.admin-family-card-top{ display:flex; gap:16px; align-items:flex-start; }
+.admin-family-fields{ flex:1; display:grid; gap:10px; grid-template-columns: 1fr 1fr; min-width:0; }
+.admin-family-fields .full{ grid-column: 1/-1; }
+.admin-photos-section{ margin: 18px 0 6px; }
+.admin-photos-label{ display:block; font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--text-soft); margin-bottom:10px; font-weight:600; }
+.admin-photos-strip{ display:flex; gap:14px; overflow-x:auto; padding-bottom:10px; }
+.admin-photo-card{ width:120px; flex-shrink:0; display:flex; flex-direction:column; gap:6px; }
+.admin-photo-thumb-wrap{ position:relative; width:120px; height:120px; border-radius:12px; overflow:hidden; box-shadow: 0 0 0 2px transparent; transition: box-shadow .3s; }
+.admin-photo-card.is-cover .admin-photo-thumb-wrap{ box-shadow: 0 0 0 3px var(--gold); }
+.admin-photo-thumb-wrap img{ width:100%; height:100%; object-fit:cover; }
+.admin-photo-cover-badge{ position:absolute; top:6px; right:6px; background:var(--gold); color:#fff; width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px; }
+.admin-photo-card input[type="text"]{ width:120px; font-size:11px; padding:6px 8px; }
+.admin-photo-card-actions{ display:flex; gap:4px; justify-content:center; flex-wrap:wrap; }
+.admin-photo-card-actions .admin-icon-btn{ width:26px; height:26px; font-size:11px; }
+.admin-photo-add-btn{
+  width:120px; height:120px; border-radius:12px; border:2px dashed var(--gold);
+  display:flex; align-items:center; justify-content:center; text-align:center; font-size:12px;
+  color:var(--gold); font-weight:600; cursor:pointer; flex-shrink:0; padding:8px; transition: all .3s;
+}
+.admin-photo-add-btn:hover{ background: var(--gold); color:#fff; }
+.admin-family-card-bottom{ display:flex; justify-content:flex-end; padding-top:14px; margin-top:8px; border-top:1px solid var(--card-border); }
+
+/* ============================================================
+   ADMIN — MUSIQA (background music) SECTION
+   ============================================================ */
+.music-file-box{
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius-md); padding: 18px;
+}
+.music-file-info{ display:flex; align-items:center; gap:14px; }
+.music-file-icon{
+  width:48px; height:48px; border-radius:12px; flex-shrink:0;
+  background: linear-gradient(145deg, var(--beige), var(--beige-2));
+  display:flex; align-items:center; justify-content:center; border:1px solid var(--card-border);
+}
+.music-file-icon svg{ width:22px; height:22px; stroke: var(--gold); }
+.music-file-meta{ min-width:0; }
+.music-file-name{ font-weight:600; color: var(--text); font-size:14.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.music-file-size{ font-size:12.5px; color: var(--text-soft); margin-top:2px; }
+
+.music-volume-value{ color: var(--gold); font-weight:700; text-transform:none; letter-spacing:0; }
+
+input[type="range"].music-range{
+  -webkit-appearance:none; appearance:none; width:100%; height:6px; border-radius:999px;
+  background: var(--beige-2); outline:none; cursor:pointer; margin-top:6px;
+}
+input[type="range"].music-range::-webkit-slider-thumb{
+  -webkit-appearance:none; appearance:none; width:20px; height:20px; border-radius:50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-2)); border:3px solid var(--cream);
+  box-shadow: 0 2px 8px rgba(90,60,20,0.3); cursor:pointer; transition: transform .2s;
+}
+input[type="range"].music-range::-webkit-slider-thumb:hover{ transform: scale(1.12); }
+input[type="range"].music-range::-moz-range-thumb{
+  width:20px; height:20px; border-radius:50%; border:3px solid var(--cream);
+  background: linear-gradient(135deg, var(--gold), var(--gold-2)); box-shadow: 0 2px 8px rgba(90,60,20,0.3); cursor:pointer;
+}
+input[type="range"].music-range::-moz-range-track{ height:6px; border-radius:999px; background: var(--beige-2); }
+
+.admin-toggle-row{
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  background: var(--card-bg); border:1px solid var(--card-border); border-radius: var(--radius-md);
+  padding: 16px 18px; margin-bottom:14px;
+}
+.admin-toggle-label{ display:flex; flex-direction:column; gap:4px; }
+.admin-toggle-label > span:first-child{ font-weight:600; color: var(--text); font-size:14.5px; }
+
+.music-switch{ position:relative; display:inline-block; width:48px; height:28px; flex-shrink:0; }
+.music-switch input{ opacity:0; width:0; height:0; position:absolute; }
+.music-switch-track{
+  position:absolute; inset:0; background: var(--beige-2); border-radius:999px; cursor:pointer;
+  transition: background .3s; border:1px solid var(--card-border);
+}
+.music-switch-track::before{
+  content:''; position:absolute; width:20px; height:20px; left:3px; top:2.5px; border-radius:50%;
+  background:#fff; box-shadow: 0 2px 6px rgba(0,0,0,0.25); transition: transform .3s;
+}
+.music-switch input:checked + .music-switch-track{ background: linear-gradient(135deg, var(--gold), var(--gold-2)); }
+.music-switch input:checked + .music-switch-track::before{ transform: translateX(20px); }
+.music-switch input:disabled + .music-switch-track{ opacity:0.5; cursor:not-allowed; }
+.music-switch input:focus-visible + .music-switch-track{ box-shadow: 0 0 0 3px rgba(201,161,95,0.3); }
+
+/* ============================================================
+   PUBLIC — MUSIC WELCOME MODAL
+   ============================================================ */
+.music-welcome-overlay{
+  position: fixed; inset:0; z-index: 4500;
+  background: rgba(20,14,8,0.45); backdrop-filter: blur(6px);
+  display:flex; align-items:center; justify-content:center; padding: 24px;
+  opacity:0; visibility:hidden; transition: opacity .4s ease, visibility .4s ease;
+}
+.music-welcome-overlay.open{ opacity:1; visibility:visible; }
+.music-welcome-modal{
+  width:100%; max-width: 420px; text-align:center;
+  background: var(--cream); border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg); box-shadow: 0 30px 80px rgba(60,40,15,0.35);
+  padding: 40px 32px 32px; position:relative; overflow:hidden;
+  transform: translateY(18px) scale(0.97); opacity:0;
+  transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .45s ease;
+}
+.music-welcome-overlay.open .music-welcome-modal{ transform: translateY(0) scale(1); opacity:1; }
+.music-welcome-modal::before{
+  content:''; position:absolute; top:-60px; right:-60px; width:160px; height:160px; border-radius:50%;
+  background: radial-gradient(circle, rgba(201,161,95,0.18), transparent 70%); pointer-events:none;
+}
+.music-welcome-icon{
+  width:64px; height:64px; border-radius:50%; margin:0 auto 18px;
+  background: linear-gradient(145deg, var(--beige), var(--beige-2));
+  border:1px solid var(--card-border); display:flex; align-items:center; justify-content:center;
+}
+.music-welcome-icon svg{ width:28px; height:28px; stroke: var(--gold); }
+.music-welcome-modal h3{ font-family: var(--font-display); font-size:24px; color: var(--brown); margin-bottom:12px; }
+.music-welcome-modal p{ font-size:15px; color: var(--text-soft); line-height:1.65; margin-bottom:26px; }
+.music-welcome-actions{ display:flex; flex-direction:column; gap:10px; }
+.music-welcome-btn{ width:100%; padding:14px 20px; border-radius:999px; font-size:14.5px; font-weight:600; transition: all .3s; }
+.music-welcome-btn-primary{ background: linear-gradient(135deg, var(--gold), var(--gold-2)); color:#fff; box-shadow: 0 10px 26px rgba(201,161,95,0.35); }
+.music-welcome-btn-primary:hover{ transform: translateY(-2px); }
+.music-welcome-btn-secondary{ background: transparent; border:1px solid var(--card-border); color: var(--text-soft); }
+.music-welcome-btn-secondary:hover{ border-color: var(--gold); color: var(--gold); }
+.music-welcome-note{ font-size:12.5px !important; color: var(--text-soft); opacity:0.8; margin:18px 0 0 !important; }
+
+/* ============================================================
+   PUBLIC — FLOATING MUSIC CONTROL
+   ============================================================ */
+.floating-music-control{
+  position: fixed; bottom: 30px; left: 30px; width:52px; height:52px; border-radius:50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-2)); color:#fff;
+  display:flex; align-items:center; justify-content:center; box-shadow: var(--shadow);
+  z-index: 850; transition: transform var(--transition), box-shadow var(--transition);
+}
+.floating-music-control:hover{ transform: translateY(-4px) scale(1.05); }
+.floating-music-control[hidden]{ display:none; }
+.music-icon-wrap{ position:relative; width:22px; height:22px; display:flex; align-items:center; justify-content:center; }
+.music-icon-wrap svg{ position:absolute; inset:0; width:22px; height:22px; stroke:#fff; fill:none; transition: opacity .2s; }
+.music-icon-play{ opacity:1; }
+.music-icon-pause{ opacity:0; }
+.floating-music-control.is-playing .music-icon-play{ opacity:0; }
+.floating-music-control.is-playing .music-icon-pause{ opacity:1; }
+.music-eq{
+  position:absolute; bottom:6px; right:6px; display:flex; align-items:flex-end; gap:2px;
+  height:10px; opacity:0; transition: opacity .3s;
+}
+.floating-music-control.is-playing .music-eq{ opacity:1; }
+.music-eq span{ width:2.5px; height:4px; background:#fff; border-radius:2px; animation: eqBounce 0.9s ease-in-out infinite; }
+.music-eq span:nth-child(2){ animation-delay: .15s; }
+.music-eq span:nth-child(3){ animation-delay: .3s; }
+@keyframes eqBounce{ 0%,100%{ height:3px; } 50%{ height:10px; } }
+@media (prefers-reduced-motion: reduce){
+  .music-eq span{ animation:none; height:6px; }
+}
+
+.music-now-playing{
+  position: fixed; bottom: 90px; left: 30px; z-index: 851;
+  background: var(--cream); border:1px solid var(--card-border); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft); padding: 10px 16px; max-width: 220px;
+  opacity:0; visibility:hidden; transform: translateY(8px);
+  transition: opacity .3s ease, transform .3s ease, visibility .3s ease;
+  pointer-events:none;
+}
+.music-now-playing[hidden]{ display:none; }
+.floating-music-control:hover + .music-now-playing,
+.floating-music-control:focus-visible + .music-now-playing,
+.music-now-playing.flash{
+  opacity:1; visibility:visible; transform: translateY(0);
+}
+.music-now-playing-title{ display:block; font-size:13px; font-weight:600; color: var(--brown); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.music-now-playing-artist{ display:block; font-size:12px; color: var(--text-soft); margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+/* ============================================================
+   CONFIRM MODAL
+   ============================================================ */
+.confirm-overlay{
+  position: fixed; inset:0; z-index: 6000; background: rgba(20,14,8,0.6); backdrop-filter: blur(4px);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  opacity:0; visibility:hidden; transition: opacity .3s ease, visibility .3s ease;
+}
+.confirm-overlay.open{ opacity:1; visibility:visible; }
+.confirm-box{
+  width:100%; max-width: 420px; background: var(--cream); border-radius: var(--radius-md);
+  border: 1px solid var(--card-border); box-shadow: var(--shadow); padding: 30px;
+  animation: lightboxIn .3s ease;
+}
+.confirm-box p{ font-size:15.5px; color: var(--text); margin-bottom:24px; line-height:1.6; }
+.confirm-actions{ display:flex; gap:12px; justify-content:flex-end; }
+.confirm-cancel{ padding: 11px 20px; border-radius:999px; background: var(--beige); color: var(--text); font-weight:600; font-size:14px; transition: all .3s; }
+.confirm-cancel:hover{ background: var(--beige-2); }
+.confirm-danger{ padding: 11px 20px; border-radius:999px; background: var(--danger); color:#fff; font-weight:600; font-size:14px; transition: all .3s; }
+.confirm-danger:hover{ filter: brightness(1.08); transform: translateY(-1px); }
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+.toast-container{ position: fixed; bottom: 30px; left:50%; transform: translateX(-50%); z-index: 7000; display:flex; flex-direction:column; gap:10px; align-items:center; pointer-events:none; }
+.toast{
+  background: var(--brown); color: var(--cream); padding: 14px 26px; border-radius: 999px;
+  font-size: 14px; font-weight:600; box-shadow: var(--shadow);
+  opacity:0; transform: translateY(16px); transition: all .4s ease; max-width: 90vw; text-align:center;
+}
+.toast.show{ opacity:1; transform: translateY(0); }
+.toast-error{ background: var(--danger); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px){
+  .hero-grid{ grid-template-columns: 1fr; text-align:center; }
+  .hero-text{ order:2; } .hero-portrait-wrap{ order:1; }
+  .hero-kicker::before{ display:none; }
+  .hero-buttons{ justify-content:center; }
+  .about-content{ grid-template-columns: 1fr; }
+  .info-cards{ grid-template-columns: repeat(3,1fr); }
+  .values-grid{ grid-template-columns: repeat(3,1fr); }
+  .family-featured-grid{ grid-template-columns: 1fr; }
+  .family-grid{ grid-template-columns: repeat(2,1fr); }
+  .gallery-grid{ grid-template-columns: repeat(3,1fr); grid-auto-rows: 150px;}
+  .admin-tabs{ width:190px; }
+}
+@media (max-width: 768px){
+  .nav-links{ display:none; } .hamburger{ display:flex; }
+  section{ padding: 90px 6vw; }
+  .values-grid{ grid-template-columns: repeat(2,1fr); }
+  .family-grid{ grid-template-columns: repeat(2,1fr); }
+  .gallery-grid{ grid-template-columns: repeat(2,1fr); grid-auto-rows: 140px; }
+  .gallery-item:nth-child(1){ grid-column: span 2; grid-row: span 1; }
+  .gallery-item:nth-child(4){ grid-row: span 1; }
+  .info-cards{ grid-template-columns: 1fr; }
+  .timeline::before{ left: 14px; }
+  .tl-item{ width:100%; left:0 !important; text-align:left !important; padding-left: 44px; padding-right: 0; }
+  .tl-item .tl-dot{ left: 5px !important; right:auto !important; }
+  .lightbox-content{ width: 90vw; }
+
+  .admin-overlay{ padding:0; }
+  .admin-panel{ width:100%; height:100%; max-height:none; border-radius:0; }
+  .admin-body{ flex-direction:column; }
+  .admin-tabs{
+    flex-direction:row; width:100%; height:auto; overflow-x:auto; overflow-y:hidden;
+    border-right:none; border-bottom: 1px solid var(--card-border); padding: 12px 14px;
+  }
+  .admin-tab{ flex-shrink:0; white-space:nowrap; }
+  .admin-content{ padding: 20px; }
+  .admin-grid-2{ grid-template-columns: 1fr; }
+  .admin-row{ flex-direction:column; }
+  .admin-row-actions{ flex-direction:row; align-self:flex-end; }
+  .admin-portrait-row{ flex-direction:column; align-items:flex-start; }
+  .admin-topbar{ padding: 16px; }
+  .admin-topbar-actions{ width:100%; justify-content:flex-start; }
+  .admin-btn{ padding:11px 16px; font-size:13px; }
+  .admin-family-card-top{ flex-direction:column; }
+  .admin-family-fields{ grid-template-columns: 1fr; }
+
+  .family-modal{ max-height:100%; height:100%; border-radius:0; }
+  .family-modal-overlay{ padding:0; }
+  .family-modal-scroll{ padding: 70px 20px 40px; }
+  .family-modal-header{ flex-direction:column; align-items:center; text-align:center; }
+  .family-modal-info{ text-align:center; }
+  .family-modal-tags{ align-items:center; }
+
+  .floating-music-control{ bottom: 20px; left: 20px; width:48px; height:48px; }
+  .music-now-playing{ bottom: 78px; left: 20px; max-width: 180px; }
+  .back-to-top{ bottom: 20px; right: 20px; }
+  .music-welcome-modal{ padding: 32px 24px 26px; }
+}
+@media (max-width: 420px){
+  .values-grid{ grid-template-columns: 1fr 1fr; }
+  .hero-buttons{ flex-direction:column; align-items:stretch; }
+  .family-grid{ grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-ring"></div>
+  <div class="loader-text">Tumajon</div>
+</div>
+
+<!-- Floating decorative background shapes -->
+<div class="floaters" aria-hidden="true">
+  <div class="floater" style="width:220px;height:220px; top:8%; left:5%; animation-duration:16s;"></div>
+  <div class="floater" style="width:160px;height:160px; top:60%; left:85%; animation-duration:20s;"></div>
+  <div class="floater" style="width:120px;height:120px; top:30%; left:70%; animation-duration:12s;"></div>
+  <div class="floater" style="width:180px;height:180px; top:80%; left:15%; animation-duration:18s;"></div>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+  <div class="nav-logo">Tumajon<span>.</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero" class="active">Bosh sahifa</a></li>
+    <li><a href="#about">Men haqimda</a></li>
+    <li><a href="#values">Qadriyatlar</a></li>
+    <li><a href="#gallery">Xotiralar</a></li>
+    <li><a href="#family">Oila</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" id="themeToggle" aria-label="Rejimni almashtirish">
+      <svg id="themeIcon" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menyu">
+      <svg fill="none" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24">
+        <line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="closeMenuBtn" aria-label="Yopish">
+    <svg fill="none" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+  <a href="#hero" class="mobile-link">Bosh sahifa</a>
+  <a href="#about" class="mobile-link">Men haqimda</a>
+  <a href="#values" class="mobile-link">Qadriyatlar</a>
+  <a href="#gallery" class="mobile-link">Xotiralar</a>
+  <a href="#family" class="mobile-link">Oila</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="hero-kicker">Xush kelibsiz</span>
+      <h1 class="hero-title" id="heroTitle">Tumajon <em>Ollomova</em></h1>
+      <p class="hero-sub" id="heroAge">54 yosh</p>
+      <p class="hero-desc" id="heroDesc">"Mehr, oila va go'zal xotiralar bilan bezalgan hayot."</p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">Men haqimda</a>
+        <a href="#gallery" class="btn btn-outline">Xotiralarim</a>
+      </div>
+    </div>
+    <div class="hero-portrait-wrap">
+      <div class="hero-portrait" id="heroPortrait"></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="mouse"></div><span>Pastga</span></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-kicker">Tanishuv</span>
+      <h2 class="section-title">Men haqimda</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-content">
+      <div class="about-info reveal">
+        <p class="about-desc" id="aboutText"></p>
+        <div class="info-cards">
+          <div class="info-card">
+            <svg class="icon" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <div class="label">Ism</div><div class="value" id="aboutNameValue">Tumajon</div>
+          </div>
+          <div class="info-card">
+            <svg class="icon" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>
+            <div class="label">Familiya</div><div class="value" id="aboutSurnameValue">Ollomova</div>
+          </div>
+          <div class="info-card">
+            <svg class="icon" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+            <div class="label">Yosh</div><div class="value" id="aboutAgeValue">54 yosh</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2" id="aboutVisual"></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values" id="values">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-kicker">Qadriyatlar</span>
+      <h2 class="section-title">Hayotdagi qadriyatlarim</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="values-grid" id="valuesGrid"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-kicker">Albom</span>
+      <h2 class="section-title">Go'zal xotiralar</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Yopish"><svg fill="none" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Oldingi"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <div class="lightbox-content">
+    <div id="lightboxMedia"></div>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Keyingi"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+</div>
+
+<!-- FAMILY -->
+<section class="family" id="family">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-kicker">Oila</span>
+      <h2 class="section-title">Mening oilam</h2>
+      <div class="section-line"></div>
+    </div>
+    <div id="familyContainer"></div>
+  </div>
+</section>
+
+<!-- FAMILY PROFILE MODAL (single reusable dynamic modal) -->
+<div class="family-modal-overlay" id="familyModalOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Oila a'zosi profili">
+  <div class="family-modal">
+    <button class="family-modal-close" id="familyModalClose" aria-label="Yopish">✕</button>
+    <div class="family-modal-scroll">
+      <div class="family-modal-header">
+        <div class="family-modal-cover" id="familyModalCover"></div>
+        <div class="family-modal-info">
+          <h3 id="familyModalName"></h3>
+          <div class="family-modal-tags" id="familyModalTags"></div>
+          <p class="family-modal-desc" id="familyModalDesc"></p>
+        </div>
+      </div>
+      <div class="family-modal-gallery" id="familyModalGallery"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Family inner photo lightbox (scoped to selected family member's photos) -->
+<div class="family-lightbox" id="familyLightbox">
+  <button class="lb-close" id="familyLbClose" aria-label="Yopish"><svg fill="none" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+  <button class="lb-btn lb-prev" id="familyLbPrev" aria-label="Oldingi"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+  <div class="lightbox-content">
+    <div id="familyLightboxMedia"></div>
+    <div class="lightbox-caption" id="familyLightboxCaption"></div>
+    <div class="family-lightbox-counter" id="familyLightboxCounter"></div>
+  </div>
+  <button class="lb-btn lb-next" id="familyLbNext" aria-label="Keyingi"><svg fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline-section" id="timeline">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-kicker">Yillar bo'ylab</span>
+      <h2 class="section-title">Hayot xotiralari</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline" id="timelineContainer"></div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-mark reveal">"</div>
+  <p class="quote-text reveal" id="quoteText"></p>
+</section>
+
+<footer>
+  <p>&copy; <span id="year"></span> <span>Tumajon Ollomova</span> — barcha huquqlar himoyalangan.</p>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Yuqoriga qaytish">
+  <svg fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+
+<!-- ============================================================
+     HIDDEN ADMIN PANEL — invisible until "admin26" is typed
+     ============================================================ -->
+<div class="admin-overlay" id="adminOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Boshqaruv paneli">
+  <div class="admin-panel">
+    <div class="admin-topbar">
+      <div class="admin-title"><span>Maxfiy panel</span>Boshqaruv paneli</div>
+      <div class="admin-topbar-actions">
+        <span class="admin-dirty" id="adminDirtyIndicator" hidden>Saqlanmagan o‘zgarishlar</span>
+        <button type="button" class="admin-btn admin-btn-outline" id="adminResetBtn">Standart holatga qaytarish</button>
+        <button type="button" class="admin-btn admin-btn-primary" id="adminSaveBtn">O‘zgarishlarni saqlash</button>
+        <button type="button" class="admin-close-btn" id="adminCloseBtn" aria-label="Panelni yopish">✕</button>
+      </div>
+    </div>
+    <div class="admin-body">
+      <nav class="admin-tabs" id="adminTabs">
+        <button type="button" class="admin-tab active" data-tab="profile">Asosiy ma’lumotlar</button>
+        <button type="button" class="admin-tab" data-tab="portrait">Portret</button>
+        <button type="button" class="admin-tab" data-tab="values">Qadriyatlar</button>
+        <button type="button" class="admin-tab" data-tab="gallery">Xotiralar</button>
+        <button type="button" class="admin-tab" data-tab="family">Oila a’zolari</button>
+        <button type="button" class="admin-tab" data-tab="timeline">Hayot xotiralari</button>
+        <button type="button" class="admin-tab" data-tab="music">Musiqa</button>
+      </nav>
+      <div class="admin-content" id="adminContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation modal for destructive/reset actions -->
+<div class="confirm-overlay" id="confirmOverlay" aria-hidden="true">
+  <div class="confirm-box" role="alertdialog" aria-modal="true">
+    <p id="confirmMessage"></p>
+    <div class="confirm-actions">
+      <button type="button" class="confirm-cancel" id="confirmCancelBtn">Bekor qilish</button>
+      <button type="button" class="confirm-danger" id="confirmOkBtn">O‘chirish</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notifications -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ============================================================
+     PUBLIC MUSIC WELCOME MODAL
+     ============================================================ -->
+<div class="music-welcome-overlay" id="musicWelcomeOverlay" aria-hidden="true">
+  <div class="music-welcome-modal" role="dialog" aria-modal="true" aria-labelledby="musicWelcomeTitle" aria-describedby="musicWelcomeDesc">
+    <div class="music-welcome-icon">
+      <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+    </div>
+    <h3 id="musicWelcomeTitle">Xush kelibsiz!</h3>
+    <p id="musicWelcomeDesc">Sayt bo‘ylab sayr qilayotganda orqa fonda yoqimli bir kuy yangrab turishini xohlaysizmi?</p>
+    <div class="music-welcome-actions">
+      <button type="button" class="music-welcome-btn music-welcome-btn-primary" id="musicWelcomeAccept">Ha, yoqilsin</button>
+      <button type="button" class="music-welcome-btn music-welcome-btn-secondary" id="musicWelcomeDecline">Kerak emas</button>
+    </div>
+    <p class="music-welcome-note">Musiqani istalgan payt yoqish yoki o‘chirish mumkin.</p>
+  </div>
+</div>
+
+<!-- ============================================================
+     PUBLIC FLOATING MUSIC CONTROL
+     ============================================================ -->
+<button type="button" class="floating-music-control" id="floatingMusicBtn" aria-pressed="false" aria-label="Musiqani yoqish" hidden>
+  <span class="music-icon-wrap">
+    <svg class="music-icon-play" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+    <svg class="music-icon-pause" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="4" x2="7" y2="20"></line><line x1="17" y1="4" x2="17" y2="20"></line></svg>
+  </span>
+  <span class="music-eq" aria-hidden="true"><span></span><span></span><span></span></span>
+</button>
+<div class="music-now-playing" id="musicNowPlaying" hidden>
+  <span class="music-now-playing-title"></span>
+  <span class="music-now-playing-artist"></span>
+</div>
+
+<script>
+/* ============================================================
+   CONSTANTS & SHARED SVG ICONS
+   ============================================================ */
+const STORAGE_KEY = 'tumajonSiteData_v3';
+
+const personIconSVG = `<svg fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg>`;
+const galleryIconSVG = `<svg fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg>`;
+const heartIconSVG = `<svg fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11z"></path></svg>`;
+const musicIconSVG = `<svg fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>`;
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+function generateId(){ return 'id-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,8); }
+function escapeHtml(str){
+  if(str === undefined || str === null) return '';
+  return String(str).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+}
+const esc = escapeHtml;
+function deepClone(obj){ return JSON.parse(JSON.stringify(obj)); }
+function formatFileSize(bytes){
+  const n = typeof bytes === 'number' ? bytes : 0;
+  if(n <= 0) return '0 KB';
+  if(n < 1024 * 1024) return (n / 1024).toFixed(0) + ' KB';
+  return (n / (1024 * 1024)).toFixed(1) + ' MB';
+}
+function swapArr(arr, i, j){ const t = arr[i]; arr[i] = arr[j]; arr[j] = t; }
+function moveArrById(arr, id, dir){
+  const i = arr.findIndex(x => x.id === id);
+  const j = i + dir;
+  if(i < 0 || j < 0 || j >= arr.length) return;
+  swapArr(arr, i, j);
+}
+
+/* ============================================================
+   IMAGE PROCESSING — resize + compress before storing
+   ============================================================ */
+function processImage(file, maxDim, quality){
+  return new Promise((resolve, reject) => {
+    if(!file || !file.type || !file.type.startsWith('image/')){
+      reject(new Error('invalid-file'));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if(width > height){
+          if(width > maxDim){ height = Math.round(height * (maxDim / width)); width = maxDim; }
+        } else {
+          if(height > maxDim){ width = Math.round(width * (maxDim / height)); height = maxDim; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        try{ resolve(canvas.toDataURL('image/jpeg', quality)); }
+        catch(err){ reject(err); }
+      };
+      img.onerror = () => reject(new Error('image-load-error'));
+      img.src = e.target.result;
+    };
+    reader.onerror = () => reject(new Error('file-read-error'));
+    reader.readAsDataURL(file);
+  });
+}
+
+/* ============================================================
+   DEFAULT DATA
+   ============================================================ */
+function createFamilyMember(relationship){
+  return {
+    id: generateId(),
+    name: '',
+    relationship: relationship,
+    relationToBirthdayPerson: '',
+    description: '',
+    birthDate: '',
+    photos: [],
+    coverPhotoId: ''
+  };
+}
+function getDefaultFamily(){
+  const arr = [];
+  arr.push(createFamilyMember('O‘g‘lim'));
+  arr.push(createFamilyMember('Qizim'));
+  for(let i = 0; i < 7; i++) arr.push(createFamilyMember('Nevaram'));
+  return arr;
+}
+function getDefaultGallery(){
+  const captions = ['Xotira 1','Xotira 2','Xotira 3','Xotira 4','Xotira 5','Xotira 6','Xotira 7','Xotira 8'];
+  return captions.map(c => ({ id: generateId(), image: '', caption: c }));
+}
+function getDefaultTimeline(){
+  return [
+    { id: generateId(), title: 'Go‘zal kun', desc: 'Bu yerga o‘sha kunning tavsifi va his-tuyg‘ular yoziladi.', date: '' },
+    { id: generateId(), title: 'Oilaviy bayram', desc: 'Oila bilan birga o‘tkazilgan quvonchli lahza tavsifi.', date: '' },
+    { id: generateId(), title: 'Unutilmas lahza', desc: 'Har doim yodda qoladigan alohida voqea tafsiloti.', date: '' },
+    { id: generateId(), title: 'Baxtli xotira', desc: 'Yurakka yaqin, iliq va baxtli bir xotira tasviri.', date: '' }
+  ];
+}
+function getDefaultData(){
+  return {
+    profile: {
+      firstName: 'Tumajon',
+      lastName: 'Ollomova',
+      age: '54',
+      heroTitle: '',
+      heroDescription: "Mehr, oila va go'zal xotiralar bilan bezalgan hayot.",
+      about: "Har bir inson o'z hayotida go'zal lahzalar, mehr va yaqinlar bilan bog'liq xotiralar to'playdi. Ushbu sahifa — shu iliq xotiralar, oilaviy qadriyatlar va hayotning eng qimmatli daqiqalarini asrab qolish uchun yaratilgan shaxsiy burchak.\n\nHar bir kun — yangi imkoniyat, har bir uchrashuv — yangi xotira.",
+      portrait: '',
+      aboutPhoto: ''
+    },
+    values: [
+      { icon: '❤️', name: 'Oila' },
+      { icon: '🌸', name: 'Mehr' },
+      { icon: '🤍', name: 'Yaqinlar' },
+      { icon: '✨', name: 'Baxt' },
+      { icon: '🌿', name: 'Xotiralar' }
+    ],
+    gallery: getDefaultGallery(),
+    family: getDefaultFamily(),
+    timeline: getDefaultTimeline(),
+    quote: 'Hayotning eng katta boyligi — yoningdagi aziz insonlar.'
+  };
+}
+
+/* ============================================================
+   FAMILY MEMBER NORMALIZATION (handles legacy single-image data)
+   ============================================================ */
+function normalizeFamilyMember(m){
+  const base = {
+    id: m.id || generateId(),
+    name: m.name || '',
+    relationship: m.relationship || '',
+    relationToBirthdayPerson: m.relationToBirthdayPerson || '',
+    description: m.description || '',
+    birthDate: m.birthDate || '',
+    photos: [],
+    coverPhotoId: ''
+  };
+  if(Array.isArray(m.photos)){
+    base.photos = m.photos
+      .map(p => ({ id: p.id || generateId(), src: p.src || '', caption: p.caption || '' }))
+      .filter(p => !!p.src);
+  } else if(m.image){
+    base.photos = [{ id: generateId(), src: m.image, caption: '' }];
+  }
+  base.coverPhotoId = (m.coverPhotoId && base.photos.some(p => p.id === m.coverPhotoId))
+    ? m.coverPhotoId
+    : (base.photos[0] ? base.photos[0].id : '');
+  return base;
+}
+
+/* ============================================================
+   LOAD / SAVE (API-based) — no localStorage for site data
+   ============================================================ */
+async function loadData(){
+  const defaults = getDefaultData();
+  try {
+    const response = await fetch('/api/get-data');
+    if (!response.ok) throw new Error('Server xatosi');
+    const data = await response.json();
+    return {
+      profile: Object.assign({}, defaults.profile, (data.profile && typeof data.profile === 'object') ? data.profile : {}),
+      values: Array.isArray(data.values) && data.values.length ? data.values : defaults.values,
+      gallery: Array.isArray(data.gallery) ? data.gallery : defaults.gallery,
+      family: Array.isArray(data.family) && data.family.length ? data.family.map(normalizeFamilyMember) : defaults.family,
+      timeline: Array.isArray(data.timeline) ? data.timeline : defaults.timeline,
+      quote: typeof data.quote === 'string' ? data.quote : defaults.quote
+    };
+  } catch (e) {
+    console.error('Ma\'lumotlarni yuklab bo‘lmadi, standart qiymatlar ishlatiladi.', e);
+    return defaults;
+  }
+}
+
+async function trySaveData(data){
+  try {
+    const response = await fetch('/api/save-data', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (!response.ok) throw new Error('Server xatosi');
+    return true;
+  } catch (e) {
+    showToast('Ma\'lumotlarni serverga saqlashda xatolik yuz berdi. Iltimos, internet aloqasini tekshiring.', 'error');
+    return false;
+  }
+}
+
+/* ============================================================
+   MUSIQA — SETTINGS PERSISTENCE (localStorage, lightweight only)
+   ============================================================ */
+const MUSIC_SETTINGS_KEY = 'tumajonMusicSettings_v1';
+const MUSIC_SESSION_CHOICE_KEY = 'tumajonMusicChoice_v1';
+
+function getDefaultMusicSettings(){
+  return { enabled: false, title: '', artist: '', volume: 0.3, loop: false, hasTrack: false, fileName: '', fileSize: 0 };
+}
+function loadMusicSettings(){
+  const defaults = getDefaultMusicSettings();
+  try{
+    const raw = localStorage.getItem(MUSIC_SETTINGS_KEY);
+    if(!raw) return defaults;
+    const parsed = JSON.parse(raw);
+    if(!parsed || typeof parsed !== 'object') return defaults;
+    return {
+      enabled: !!parsed.enabled,
+      title: typeof parsed.title === 'string' ? parsed.title : '',
+      artist: typeof parsed.artist === 'string' ? parsed.artist : '',
+      volume: (typeof parsed.volume === 'number' && parsed.volume >= 0 && parsed.volume <= 1) ? parsed.volume : defaults.volume,
+      loop: !!parsed.loop,
+      hasTrack: !!parsed.hasTrack,
+      fileName: typeof parsed.fileName === 'string' ? parsed.fileName : '',
+      fileSize: typeof parsed.fileSize === 'number' ? parsed.fileSize : 0
+    };
+  }catch(e){
+    return defaults;
+  }
+}
+function saveMusicSettingsToStorage(){
+  try{
+    localStorage.setItem(MUSIC_SETTINGS_KEY, JSON.stringify(musicSettings));
+    return true;
+  }catch(e){
+    showToast('Musiqa sozlamalarini saqlashda xatolik yuz berdi.', 'error');
+    return false;
+  }
+}
+
+/* ============================================================
+   MUSIQA — INDEXEDDB LAYER (stores the actual audio Blob)
+   ============================================================ */
+const MUSIC_DB_NAME = 'tumajonMusicDB_v1';
+const MUSIC_DB_STORE = 'tracks';
+const MUSIC_DB_KEY = 'bgTrack';
+let musicDBPromise = null;
+
+function openMusicDB(){
+  if(musicDBPromise) return musicDBPromise;
+  musicDBPromise = new Promise((resolve, reject) => {
+    if(!window.indexedDB){ reject(new Error('indexeddb-unavailable')); return; }
+    try{
+      const req = indexedDB.open(MUSIC_DB_NAME, 1);
+      req.onupgradeneeded = () => {
+        const db = req.result;
+        if(!db.objectStoreNames.contains(MUSIC_DB_STORE)) db.createObjectStore(MUSIC_DB_STORE);
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error || new Error('indexeddb-open-error'));
+    }catch(e){
+      reject(e);
+    }
+  }).catch(err => { musicDBPromise = null; throw err; });
+  return musicDBPromise;
+}
+function saveMusicBlob(blob){
+  return openMusicDB().then(db => new Promise((resolve, reject) => {
+    try{
+      const tx = db.transaction(MUSIC_DB_STORE, 'readwrite');
+      tx.objectStore(MUSIC_DB_STORE).put(blob, MUSIC_DB_KEY);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => reject(tx.error || new Error('indexeddb-write-error'));
+    }catch(e){ reject(e); }
+  }));
+}
+function loadMusicBlob(){
+  return openMusicDB().then(db => new Promise((resolve, reject) => {
+    try{
+      const tx = db.transaction(MUSIC_DB_STORE, 'readonly');
+      const req = tx.objectStore(MUSIC_DB_STORE).get(MUSIC_DB_KEY);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = () => reject(req.error || new Error('indexeddb-read-error'));
+    }catch(e){ reject(e); }
+  }));
+}
+function deleteMusicBlob(){
+  return openMusicDB().then(db => new Promise((resolve, reject) => {
+    try{
+      const tx = db.transaction(MUSIC_DB_STORE, 'readwrite');
+      tx.objectStore(MUSIC_DB_STORE).delete(MUSIC_DB_KEY);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => reject(tx.error || new Error('indexeddb-delete-error'));
+    }catch(e){ reject(e); }
+  }));
+}
+
+/* ============================================================
+   MUSIQA — PLAYBACK ENGINE (single shared Audio element)
+   ============================================================ */
+let musicSettings = loadMusicSettings();
+let musicAudioEl = null;
+let musicObjectUrl = null;
+let musicFadeTimer = null;
+let musicLoadPromise = null;
+let musicWelcomeIsOpen = false;
+let musicWelcomePreviousFocus = null;
+let musicPreviewActive = false;
+
+function getMusicAudioEl(){
+  if(!musicAudioEl){
+    musicAudioEl = new Audio();
+    musicAudioEl.loop = !!musicSettings.loop;
+    musicAudioEl.addEventListener('ended', () => {
+      updateFloatingMusicControlUI();
+      if(activeAdminTab === 'music' && adminIsOpen) renderAdminActiveTab();
+    });
+    musicAudioEl.addEventListener('error', () => {
+      showToast('Musiqa faylini ijro etishda xatolik yuz berdi.', 'error');
+      updateFloatingMusicControlUI();
+      if(activeAdminTab === 'music' && adminIsOpen) renderAdminActiveTab();
+    });
+  }
+  return musicAudioEl;
+}
+function ensureMusicLoaded(){
+  const audio = getMusicAudioEl();
+  if(musicObjectUrl && audio.src) return Promise.resolve(true);
+  if(musicLoadPromise) return musicLoadPromise;
+  musicLoadPromise = loadMusicBlob().then(blob => {
+    if(!blob) return false;
+    if(musicObjectUrl){ URL.revokeObjectURL(musicObjectUrl); musicObjectUrl = null; }
+    musicObjectUrl = URL.createObjectURL(blob);
+    audio.src = musicObjectUrl;
+    audio.loop = !!musicSettings.loop;
+    return true;
+  }).catch(() => false).finally(() => { musicLoadPromise = null; });
+  return musicLoadPromise;
+}
+function clearMusicFade(){
+  if(musicFadeTimer){ clearInterval(musicFadeTimer); musicFadeTimer = null; }
+}
+function fadeAudioTo(audio, targetVolume, duration, onDone){
+  clearMusicFade();
+  const startVolume = audio.volume;
+  const startTime = performance.now();
+  if(duration <= 0 || startVolume === targetVolume){
+    audio.volume = targetVolume;
+    if(onDone) onDone();
+    return;
+  }
+  musicFadeTimer = setInterval(() => {
+    const t = Math.min(1, (performance.now() - startTime) / duration);
+    audio.volume = startVolume + (targetVolume - startVolume) * t;
+    if(t >= 1){
+      clearMusicFade();
+      audio.volume = targetVolume;
+      if(onDone) onDone();
+    }
+  }, 40);
+}
+function playPublicMusic(){
+  musicPreviewActive = false;
+  ensureMusicLoaded().then(ok => {
+    if(!ok){ showToast('Musiqa faylini yuklab bo‘lmadi.', 'error'); return; }
+    const audio = getMusicAudioEl();
+    audio.loop = !!musicSettings.loop;
+    if(audio.volume === undefined || Number.isNaN(audio.volume)) audio.volume = 0;
+    audio.volume = 0;
+    let playPromise;
+    try{ playPromise = audio.play(); }catch(err){ playPromise = Promise.reject(err); }
+    Promise.resolve(playPromise).then(() => {
+      updateFloatingMusicControlUI();
+      fadeAudioTo(audio, musicSettings.volume, 1000);
+      flashNowPlayingTooltip();
+    }).catch(() => {
+      updateFloatingMusicControlUI();
+    });
+  });
+}
+function pausePublicMusic(){
+  const audio = musicAudioEl;
+  if(!audio || audio.paused) return;
+  const target = musicSettings.volume;
+  fadeAudioTo(audio, 0, 500, () => {
+    try{ audio.pause(); }catch(e){ /* ignore */ }
+    audio.volume = target;
+    updateFloatingMusicControlUI();
+  });
+}
+function toggleFloatingMusic(){
+  const audio = musicAudioEl;
+  if(!audio || audio.paused){ playPublicMusic(); }
+  else{ pausePublicMusic(); }
+}
+function toggleMusicPreview(){
+  ensureMusicLoaded().then(ok => {
+    if(!ok){ showToast('Musiqa faylini oldindan tinglab bo‘lmadi.', 'error'); return; }
+    const audio = getMusicAudioEl();
+    if(audio.paused){
+      clearMusicFade();
+      audio.loop = !!musicSettings.loop;
+      audio.volume = musicSettings.volume;
+      let playPromise;
+      try{ playPromise = audio.play(); }catch(err){ playPromise = Promise.reject(err); }
+      Promise.resolve(playPromise).then(() => {
+        musicPreviewActive = true;
+        updateFloatingMusicControlUI();
+        renderAdminActiveTab();
+      }).catch(() => {
+        showToast('Ijro qilishda xatolik yuz berdi.', 'error');
+      });
+    } else {
+      clearMusicFade();
+      try{ audio.pause(); }catch(e){ /* ignore */ }
+      musicPreviewActive = false;
+      updateFloatingMusicControlUI();
+      renderAdminActiveTab();
+    }
+  });
+}
+async function handleMusicUpload(file){
+  try{
+    await saveMusicBlob(file);
+  }catch(e){
+    showToast('Musiqa faylini saqlashda xatolik yuz berdi.', 'error');
+    return;
+  }
+  clearMusicFade();
+  if(musicAudioEl){
+    try{ musicAudioEl.pause(); }catch(e){ /* ignore */ }
+    if(musicObjectUrl){ URL.revokeObjectURL(musicObjectUrl); musicObjectUrl = null; }
+    musicAudioEl.removeAttribute('src');
+    try{ musicAudioEl.load(); }catch(e){ /* ignore */ }
+  }
+  musicSettings.hasTrack = true;
+  musicSettings.fileName = file.name || 'Musiqa fayli';
+  musicSettings.fileSize = typeof file.size === 'number' ? file.size : 0;
+  saveMusicSettingsToStorage();
+  renderAdminActiveTab();
+  initMusicPublicUI();
+  showToast('Musiqa muvaffaqiyatli yuklandi');
+}
+async function deleteMusicTrack(){
+  clearMusicFade();
+  try{
+    if(musicAudioEl){
+      try{ musicAudioEl.pause(); }catch(e){ /* ignore */ }
+      if(musicObjectUrl){ URL.revokeObjectURL(musicObjectUrl); musicObjectUrl = null; }
+      musicAudioEl.removeAttribute('src');
+      try{ musicAudioEl.load(); }catch(e){ /* ignore */ }
+    }
+    await deleteMusicBlob();
+  }catch(e){
+    showToast('Musiqani o‘chirishda xatolik yuz berdi.', 'error');
+  }
+  musicSettings = getDefaultMusicSettings();
+  saveMusicSettingsToStorage();
+  renderAdminActiveTab();
+  initMusicPublicUI();
+  showToast('Fon musiqasi o‘chirildi');
+}
+
+/* ============================================================
+   MUSIQA — PUBLIC UI (floating control, now-playing, welcome modal)
+   ============================================================ */
+function updateFloatingMusicControlUI(){
+  const floatingBtn = document.getElementById('floatingMusicBtn');
+  if(!floatingBtn) return;
+  const playing = !!(musicAudioEl && !musicAudioEl.paused);
+  floatingBtn.classList.toggle('is-playing', playing);
+  floatingBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+  floatingBtn.setAttribute('aria-label', playing ? 'Musiqani to‘xtatish' : 'Musiqani yoqish');
+}
+function updateNowPlayingInfo(){
+  const wrap = document.getElementById('musicNowPlaying');
+  if(!wrap) return;
+  const titleEl = wrap.querySelector('.music-now-playing-title');
+  const artistEl = wrap.querySelector('.music-now-playing-artist');
+  const hasInfo = !!(musicSettings.title || musicSettings.artist);
+  wrap.hidden = !hasInfo;
+  if(titleEl) titleEl.textContent = musicSettings.title ? ('♪ ' + musicSettings.title) : '♪';
+  if(artistEl) artistEl.textContent = musicSettings.artist || '';
+}
+let musicTooltipFlashTimeout = null;
+function flashNowPlayingTooltip(){
+  const wrap = document.getElementById('musicNowPlaying');
+  if(!wrap || wrap.hidden) return;
+  wrap.classList.add('flash');
+  clearTimeout(musicTooltipFlashTimeout);
+  musicTooltipFlashTimeout = setTimeout(() => wrap.classList.remove('flash'), 3000);
+}
+function initMusicPublicUI(){
+  const floatingBtn = document.getElementById('floatingMusicBtn');
+  if(!floatingBtn) return;
+  const eligible = !!(musicSettings.enabled && musicSettings.hasTrack);
+  floatingBtn.hidden = !eligible;
+  updateNowPlayingInfo();
+  updateFloatingMusicControlUI();
+  if(!eligible) return;
+  let sessionChoice = null;
+  try{ sessionChoice = sessionStorage.getItem(MUSIC_SESSION_CHOICE_KEY); }catch(e){ /* ignore */ }
+  if(!sessionChoice){
+    setTimeout(() => { openMusicWelcomeModal(); }, 900);
+  }
+}
+
+const musicWelcomeOverlay = document.getElementById('musicWelcomeOverlay');
+const musicWelcomeAccept = document.getElementById('musicWelcomeAccept');
+const musicWelcomeDecline = document.getElementById('musicWelcomeDecline');
+const floatingMusicBtn = document.getElementById('floatingMusicBtn');
+
+function openMusicWelcomeModal(){
+  if(musicWelcomeIsOpen) return;
+  if(!(musicSettings.enabled && musicSettings.hasTrack)) return;
+  if(adminIsOpen) return;
+  let sessionChoice = null;
+  try{ sessionChoice = sessionStorage.getItem(MUSIC_SESSION_CHOICE_KEY); }catch(e){ /* ignore */ }
+  if(sessionChoice) return;
+  musicWelcomeIsOpen = true;
+  musicWelcomePreviousFocus = document.activeElement;
+  musicWelcomeOverlay.classList.add('open');
+  musicWelcomeOverlay.setAttribute('aria-hidden', 'false');
+  refreshBodyScrollLock();
+  setTimeout(() => { if(musicWelcomeAccept) musicWelcomeAccept.focus(); }, 60);
+}
+function closeMusicWelcomeModal(){
+  musicWelcomeOverlay.classList.remove('open');
+  musicWelcomeOverlay.setAttribute('aria-hidden', 'true');
+  musicWelcomeIsOpen = false;
+  refreshBodyScrollLock();
+  if(musicWelcomePreviousFocus && typeof musicWelcomePreviousFocus.focus === 'function'){
+    try{ musicWelcomePreviousFocus.focus(); }catch(e){ /* ignore */ }
+  }
+}
+if(musicWelcomeAccept){
+  musicWelcomeAccept.addEventListener('click', () => {
+    try{ sessionStorage.setItem(MUSIC_SESSION_CHOICE_KEY, 'accepted'); }catch(e){ /* ignore */ }
+    closeMusicWelcomeModal();
+    playPublicMusic();
+  });
+}
+if(musicWelcomeDecline){
+  musicWelcomeDecline.addEventListener('click', () => {
+    try{ sessionStorage.setItem(MUSIC_SESSION_CHOICE_KEY, 'declined'); }catch(e){ /* ignore */ }
+    closeMusicWelcomeModal();
+  });
+}
+if(musicWelcomeOverlay){
+  musicWelcomeOverlay.addEventListener('click', (e) => {
+    if(e.target === musicWelcomeOverlay){
+      try{ sessionStorage.setItem(MUSIC_SESSION_CHOICE_KEY, 'declined'); }catch(err){ /* ignore */ }
+      closeMusicWelcomeModal();
+    }
+  });
+  musicWelcomeOverlay.addEventListener('keydown', (e) => {
+    if(e.key === 'Tab' && musicWelcomeIsOpen){
+      const focusables = [musicWelcomeAccept, musicWelcomeDecline].filter(Boolean);
+      if(!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+}
+if(floatingMusicBtn){
+  floatingMusicBtn.addEventListener('click', toggleFloatingMusic);
+}
+
+/* ============================================================
+   GLOBAL STATE
+   ============================================================ */
+let siteData = getDefaultData(); // will be replaced after async load
+let draftData = null;
+let dirty = false;
+let activeAdminTab = 'profile';
+let adminIsOpen = false;
+let previousFocusEl = null;
+let currentGalleryData = [];
+let lightboxIsOpen = false;
+let currentLightboxIndex = 0;
+
+let currentFamilyMember = null;
+let familyModalIsOpen = false;
+let familyModalPreviousFocus = null;
+let familyLightboxIsOpen = false;
+let familyLightboxIndex = 0;
+
+/* ============================================================
+   BODY SCROLL LOCK MANAGEMENT (shared across all overlays)
+   ============================================================ */
+function isAnyOverlayOpen(){
+  return adminIsOpen || familyModalIsOpen || familyLightboxIsOpen || lightboxIsOpen || musicWelcomeIsOpen ||
+    document.getElementById('confirmOverlay').classList.contains('open');
+}
+function refreshBodyScrollLock(){
+  document.body.style.overflow = isAnyOverlayOpen() ? 'hidden' : '';
+}
+
+/* ============================================================
+   PUBLIC RENDER FUNCTIONS
+   ============================================================ */
+function renderAboutVisual(data){
+  const el = document.getElementById('aboutVisual');
+  if(!el) return;
+  const photo = data.profile.aboutPhoto;
+  el.innerHTML = photo ? `<img src="${photo}" alt="Men haqimda rasm">` : heartIconSVG;
+}
+
+function renderProfile(data){
+  const p = data.profile;
+  const fullName = `${p.firstName} ${p.lastName}`.trim();
+
+  const heroTitleEl = document.getElementById('heroTitle');
+  if(heroTitleEl){
+    if(p.heroTitle && p.heroTitle.trim()){
+      heroTitleEl.textContent = p.heroTitle;
+    } else {
+      heroTitleEl.innerHTML = `${escapeHtml(p.firstName)} <em>${escapeHtml(p.lastName)}</em>`;
+    }
+  }
+  const heroAgeEl = document.getElementById('heroAge');
+  if(heroAgeEl) heroAgeEl.textContent = p.age ? `${p.age} yosh` : '';
+  const heroDescEl = document.getElementById('heroDesc');
+  if(heroDescEl) heroDescEl.textContent = p.heroDescription ? `"${p.heroDescription}"` : '';
+
+  const portraitContainer = document.getElementById('heroPortrait');
+  if(portraitContainer){
+    portraitContainer.innerHTML = `
+      <div class="ring"></div>
+      ${p.portrait ? `<img src="${p.portrait}" alt="${escapeHtml(fullName)}">` : personIconSVG}
+      <div class="portrait-label">${p.portrait ? escapeHtml(fullName) : 'Rasm shu yerga qo‘yiladi'}</div>
+    `;
+  }
+
+  const anEl = document.getElementById('aboutNameValue'); if(anEl) anEl.textContent = p.firstName;
+  const asEl = document.getElementById('aboutSurnameValue'); if(asEl) asEl.textContent = p.lastName;
+  const aaEl = document.getElementById('aboutAgeValue'); if(aaEl) aaEl.textContent = p.age ? `${p.age} yosh` : '';
+  const abtEl = document.getElementById('aboutText'); if(abtEl) abtEl.textContent = p.about;
+
+  renderAboutVisual(data);
+}
+
+function renderValuesSection(data){
+  const grid = document.getElementById('valuesGrid');
+  if(!grid) return;
+  if(!data.values.length){
+    grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-soft);">Hozircha qadriyatlar qo‘shilmagan.</p>`;
+    return;
+  }
+  grid.innerHTML = data.values.map(v => `
+    <div class="value-card reveal">
+      <span class="value-emoji">${escapeHtml(v.icon)}</span>
+      <div class="value-name">${escapeHtml(v.name)}</div>
+    </div>
+  `).join('');
+  observeReveals(grid);
+}
+
+function renderGallerySection(data){
+  currentGalleryData = data.gallery;
+  const grid = document.getElementById('galleryGrid');
+  if(!grid) return;
+  if(!data.gallery.length){
+    grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-soft);">Hozircha xotiralar qo‘shilmagan.</p>`;
+    return;
+  }
+  grid.innerHTML = data.gallery.map((item, i) => `
+    <div class="gallery-item reveal" data-index="${i}">
+      <div class="gallery-photo">${item.image ? `<img src="${item.image}" alt="${escapeHtml(item.caption || '')}">` : galleryIconSVG}</div>
+      <div class="gallery-overlay"><span>${escapeHtml(item.caption || '')}</span></div>
+    </div>
+  `).join('');
+  observeReveals(grid);
+}
+
+/* ---------- FAMILY GROUPING & CARD RENDERING ---------- */
+function groupFamily(familyArr){
+  const featured = [];
+  const groupsOrder = [];
+  const groups = {};
+  familyArr.forEach(m => {
+    const rel = (m.relationship || '').trim();
+    const relLower = rel.toLowerCase();
+    if(relLower === 'o‘g‘lim' || relLower === 'qizim'){
+      featured.push(m);
+    } else {
+      const key = rel || 'Yaqinlarim';
+      if(!groups[key]){ groups[key] = []; groupsOrder.push(key); }
+      groups[key].push(m);
+    }
+  });
+  return { featured, groupsOrder, groups };
+}
+function groupTitle(key){
+  return key.toLowerCase() === 'nevaram' ? 'Nevaralarim' : key;
+}
+function getCoverPhoto(m){
+  return m.photos.find(p => p.id === m.coverPhotoId) || m.photos[0] || null;
+}
+function familyCardHTML(m, featured){
+  const displayName = (m.name && m.name.trim()) ? m.name.trim() : m.relationship;
+  const showRelBadge = !!(m.name && m.name.trim());
+  const cover = getCoverPhoto(m);
+  const photoCount = m.photos.length;
+  return `
+    <div class="family-card reveal${featured ? ' family-card-featured' : ''}" data-family-id="${m.id}" tabindex="0" role="button" aria-label="${esc(displayName)} haqida ko‘proq ko‘rish">
+      <div class="family-avatar">
+        ${cover ? `<img src="${cover.src}" alt="${esc(displayName)}">` : personIconSVG}
+        ${photoCount > 1 ? `<span class="family-photo-badge">${photoCount}</span>` : ''}
+      </div>
+      <div class="family-name">${esc(displayName)}</div>
+      ${showRelBadge ? `<div class="family-role">${esc(m.relationship)}</div>` : ''}
+      ${(m.description && m.description.trim()) ? `<p class="family-desc">${esc(m.description)}</p>` : ''}
+      <div class="family-card-hint">Ko‘rish</div>
+    </div>
+  `;
+}
+function renderFamilySection(data){
+  const container = document.getElementById('familyContainer');
+  if(!container) return;
+  const { featured, groupsOrder, groups } = groupFamily(data.family);
+  let html = '';
+  if(featured.length){
+    html += `<div class="family-featured-grid">` + featured.map(m => familyCardHTML(m, true)).join('') + `</div>`;
+  }
+  groupsOrder.forEach(key => {
+    html += `<h3 class="family-group-title reveal">${escapeHtml(groupTitle(key))}</h3>`;
+    html += `<div class="family-grid">` + groups[key].map(m => familyCardHTML(m, false)).join('') + `</div>`;
+  });
+  if(!featured.length && groupsOrder.length === 0){
+    html = `<p style="text-align:center;color:var(--text-soft);">Hozircha oila a’zolari qo‘shilmagan.</p>`;
+  }
+  container.innerHTML = html;
+  observeReveals(container);
+
+  if(familyModalIsOpen && currentFamilyMember){
+    const refreshed = data.family.find(f => f.id === currentFamilyMember.id);
+    if(refreshed){ currentFamilyMember = refreshed; populateFamilyModal(refreshed); }
+    else { closeFamilyModal(); }
+  }
+}
+
+function renderTimelineSection(data){
+  const container = document.getElementById('timelineContainer');
+  if(!container) return;
+  if(!data.timeline.length){
+    container.innerHTML = `<p style="text-align:center;color:var(--text-soft);">Hozircha voqealar qo‘shilmagan.</p>`;
+    return;
+  }
+  container.innerHTML = data.timeline.map(item => `
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        ${(item.date && item.date.trim()) ? `<span class="tl-date">${escapeHtml(item.date)}</span>` : ''}
+        <h3 class="tl-title">${escapeHtml(item.title)}</h3>
+        ${(item.desc && item.desc.trim()) ? `<p class="tl-desc">${escapeHtml(item.desc)}</p>` : ''}
+      </div>
+    </div>
+  `).join('');
+  observeReveals(container);
+}
+
+function renderQuoteSection(data){
+  const el = document.getElementById('quoteText');
+  if(el) el.textContent = data.quote ? `"${data.quote}"` : '';
+}
+
+function renderAll(data){
+  data = data || siteData;
+  renderProfile(data);
+  renderValuesSection(data);
+  renderGallerySection(data);
+  renderFamilySection(data);
+  renderTimelineSection(data);
+  renderQuoteSection(data);
+}
+
+/* ============================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+function observeReveals(container){
+  container.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS
+   ============================================================ */
+function showToast(msg, type){
+  const container = document.getElementById('toastContainer');
+  const t = document.createElement('div');
+  t.className = 'toast' + (type === 'error' ? ' toast-error' : '');
+  t.textContent = msg;
+  container.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => {
+    t.classList.remove('show');
+    setTimeout(() => t.remove(), 400);
+  }, 3000);
+}
+
+/* ============================================================
+   CONFIRMATION MODAL (generic)
+   ============================================================ */
+const confirmOverlay = document.getElementById('confirmOverlay');
+const confirmMessageEl = document.getElementById('confirmMessage');
+const confirmOkBtn = document.getElementById('confirmOkBtn');
+const confirmCancelBtn = document.getElementById('confirmCancelBtn');
+let confirmCallback = null;
+
+function openConfirm(message, confirmLabel, onConfirm){
+  confirmMessageEl.textContent = message;
+  confirmOkBtn.textContent = confirmLabel || 'O‘chirish';
+  confirmCallback = onConfirm;
+  confirmOverlay.classList.add('open');
+  confirmOverlay.setAttribute('aria-hidden', 'false');
+  refreshBodyScrollLock();
+}
+function closeConfirmModal(){
+  confirmOverlay.classList.remove('open');
+  confirmOverlay.setAttribute('aria-hidden', 'true');
+  confirmCallback = null;
+  refreshBodyScrollLock();
+}
+confirmOkBtn.addEventListener('click', () => {
+  const cb = confirmCallback;
+  closeConfirmModal();
+  if(cb) cb();
+});
+confirmCancelBtn.addEventListener('click', closeConfirmModal);
+confirmOverlay.addEventListener('click', (e) => { if(e.target === confirmOverlay) closeConfirmModal(); });
+
+/* ============================================================
+   ADMIN PANEL — TEMPLATE FUNCTIONS
+   ============================================================ */
+const adminOverlay = document.getElementById('adminOverlay');
+const adminContent = document.getElementById('adminContent');
+const adminTabsEl = document.getElementById('adminTabs');
+const adminDirtyIndicator = document.getElementById('adminDirtyIndicator');
+
+function tplAdminProfile(){
+  const p = draftData.profile;
+  return `
+    <div class="admin-section">
+      <h3 class="admin-section-title">Asosiy ma’lumotlar</h3>
+      <div class="admin-grid-2">
+        <div class="admin-field"><label>Ism</label><input type="text" data-section="profile" data-field="firstName" value="${esc(p.firstName)}"></div>
+        <div class="admin-field"><label>Familiya</label><input type="text" data-section="profile" data-field="lastName" value="${esc(p.lastName)}"></div>
+      </div>
+      <div class="admin-field"><label>Yosh</label><input type="text" data-section="profile" data-field="age" value="${esc(p.age)}"></div>
+      <div class="admin-field"><label>Hero sarlavhasi (ixtiyoriy)</label><input type="text" data-section="profile" data-field="heroTitle" value="${esc(p.heroTitle || '')}" placeholder="${esc(p.firstName + ' ' + p.lastName)}"></div>
+      <div class="admin-field"><label>Hero tavsifi</label><textarea rows="2" data-section="profile" data-field="heroDescription">${esc(p.heroDescription)}</textarea></div>
+      <div class="admin-field"><label>Men haqimda matni</label><textarea rows="6" data-section="profile" data-field="about">${esc(p.about)}</textarea></div>
+      <div class="admin-field"><label>Asosiy iqtibos</label><textarea rows="2" data-section="quote" data-field="quote">${esc(draftData.quote)}</textarea></div>
+    </div>
+  `;
+}
+
+function tplAdminPortrait(){
+  const p = draftData.profile;
+  return `
+    <div class="admin-section">
+      <h3 class="admin-section-title">Portret</h3>
+      <div class="admin-portrait-row">
+        <div class="admin-avatar-preview-lg">${p.portrait ? `<img src="${p.portrait}" alt="">` : personIconSVG}</div>
+        <div class="admin-portrait-actions">
+          <label class="admin-btn admin-btn-primary admin-upload-label">Rasm yuklash
+            <input type="file" accept="image/*" data-section="portrait" hidden>
+          </label>
+          <button type="button" class="admin-btn admin-btn-outline" data-section="portrait" data-action="remove">Portretni olib tashlash</button>
+        </div>
+      </div>
+      <p class="admin-hint-text">Tavsiya: aniq va yaxshi yoritilgan kvadrat rasm eng yaxshi natija beradi. Rasm avtomatik ravishda optimallashtiriladi.</p>
+    </div>
+
+    <div class="admin-section">
+      <h3 class="admin-section-title">“Men haqimda” bo‘limi rasmi</h3>
+      <div class="admin-portrait-row">
+        <div class="admin-avatar-preview-rect">${p.aboutPhoto ? `<img src="${p.aboutPhoto}" alt="">` : heartIconSVG}</div>
+        <div class="admin-portrait-actions">
+          <label class="admin-btn admin-btn-primary admin-upload-label">Rasm yuklash
+            <input type="file" accept="image/*" data-section="aboutPhoto" hidden>
+          </label>
+          <button type="button" class="admin-btn admin-btn-outline" data-section="aboutPhoto" data-action="remove">Rasmni olib tashlash</button>
+        </div>
+      </div>
+      <p class="admin-hint-text">Bu rasm “Men haqimda” bo‘limidagi bezakli katakchada ko‘rsatiladi. Rasm qo‘yilmasa, chiroyli yurak belgisi ko‘rsatiladi.</p>
+    </div>
+  `;
+}
+
+function tplAdminValues(){
+  return `
+    <div class="admin-section">
+      <h3 class="admin-section-title">Qadriyatlar</h3>
+      <div class="admin-list">
+        ${draftData.values.map((v, i) => `
+          <div class="admin-row">
+            <div class="admin-row-fields admin-row-fields-inline" style="flex:1;">
+              <input type="text" class="admin-emoji-input" data-section="values" data-index="${i}" data-field="icon" value="${esc(v.icon)}" maxlength="4">
+              <input type="text" style="flex:1;" data-section="values" data-index="${i}" data-field="name" value="${esc(v.name)}" placeholder="Qadriyat nomi">
+            </div>
+            <div class="admin-row-actions">
+              <button type="button" class="admin-icon-btn" data-section="values" data-index="${i}" data-action="move-up" title="Yuqoriga">↑</button>
+              <button type="button" class="admin-icon-btn" data-section="values" data-index="${i}" data-action="move-down" title="Pastga">↓</button>
+              <button type="button" class="admin-icon-btn admin-icon-btn-danger" data-section="values" data-index="${i}" data-action="delete" title="O‘chirish">✕</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <button type="button" class="admin-add-btn" data-section="values" data-action="add">+ Qadriyat qo‘shish</button>
+    </div>
+  `;
+}
+
+function tplAdminGallery(){
+  return `
+    <div class="admin-section">
+      <h3 class="admin-section-title">Xotiralar galereyasi</h3>
+      <div class="admin-list">
+        ${draftData.gallery.map((g) => `
+          <div class="admin-row admin-row-media">
+            <div class="admin-avatar-preview">${g.image ? `<img src="${g.image}" alt="">` : galleryIconSVG}</div>
+            <div class="admin-row-fields">
+              <input type="text" data-section="gallery" data-id="${g.id}" data-field="caption" value="${esc(g.caption || '')}" placeholder="Izoh yozing...">
+              <div class="admin-row-fields-inline">
+                <label class="admin-btn admin-btn-small admin-upload-label">Rasm yuklash
+                  <input type="file" accept="image/*" data-section="gallery" data-id="${g.id}" hidden>
+                </label>
+                <button type="button" class="admin-btn admin-btn-small admin-btn-outline" data-section="gallery" data-id="${g.id}" data-action="remove-image">Rasmni olib tashlash</button>
+              </div>
+            </div>
+            <div class="admin-row-actions admin-row-actions-vertical">
+              <button type="button" class="admin-icon-btn" data-section="gallery" data-id="${g.id}" data-action="move-up" title="Yuqoriga">↑</button>
+              <button type="button" class="admin-icon-btn" data-section="gallery" data-id="${g.id}" data-action="move-down" title="Pastga">↓</button>
+              <button type="button" class="admin-icon-btn admin-icon-btn-danger" data-section="gallery" data-id="${g.id}" data-action="delete" title="O‘chirish">✕</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <button type="button" class="admin-add-btn" data-section="gallery" data-action="add">+ Xotira qo‘shish</button>
+    </div>
+  `;
+}
+
+/* ---------- Family admin: single member card (supports many photos) ---------- */
+function tplFamilyMemberAdmin(m){
+  return `
+    <div class="admin-family-card" data-member-id="${m.id}">
+      <div class="admin-family-card-top">
+        <div class="admin-family-fields">
+          <input type="text" class="full" data-section="family" data-id="${m.id}" data-field="name" value="${esc(m.name)}" placeholder="Ismi (ixtiyoriy)">
+          <input type="text" data-section="family" data-id="${m.id}" data-field="relationship" value="${esc(m.relationship)}" placeholder="Qarindoshligi (masalan: Nevaram)">
+          <input type="text" data-section="family" data-id="${m.id}" data-field="relationToBirthdayPerson" value="${esc(m.relationToBirthdayPerson || '')}" placeholder="Tug‘ilgan kun egasiga kim bo‘ladi?">
+          <input type="text" data-section="family" data-id="${m.id}" data-field="birthDate" value="${esc(m.birthDate || '')}" placeholder="Tug‘ilgan sana (ixtiyoriy)">
+          <textarea class="full" rows="2" data-section="family" data-id="${m.id}" data-field="description" placeholder="Qisqacha ma’lumot...">${esc(m.description || '')}</textarea>
+        </div>
+      </div>
+
+      <div class="admin-photos-section">
+        <label class="admin-photos-label">Rasmlar${m.photos.length ? ` (${m.photos.length})` : ''}</label>
+        <div class="admin-photos-strip">
+          ${m.photos.map(p => `
+            <div class="admin-photo-card ${p.id === m.coverPhotoId ? 'is-cover' : ''}">
+              <div class="admin-photo-thumb-wrap">
+                <img src="${p.src}" alt="">
+                ${p.id === m.coverPhotoId ? '<span class="admin-photo-cover-badge">★</span>' : ''}
+              </div>
+              <input type="text" placeholder="Rasm izohi" value="${esc(p.caption || '')}" data-section="family-photo-caption" data-member="${m.id}" data-photo="${p.id}">
+              <div class="admin-photo-card-actions">
+                <button type="button" class="admin-icon-btn" data-section="family-photo" data-action="set-cover" data-member="${m.id}" data-photo="${p.id}" title="Asosiy rasm qilish">★</button>
+                <button type="button" class="admin-icon-btn" data-section="family-photo" data-action="move-left" data-member="${m.id}" data-photo="${p.id}" title="Chapga">◀</button>
+                <button type="button" class="admin-icon-btn" data-section="family-photo" data-action="move-right" data-member="${m.id}" data-photo="${p.id}" title="O‘ngga">▶</button>
+                <button type="button" class="admin-icon-btn admin-icon-btn-danger" data-section="family-photo" data-action="remove" data-member="${m.id}" data-photo="${p.id}" title="Rasmni o‘chirish">✕</button>
+              </div>
+            </div>
+          `).join('')}
+          <label class="admin-photo-add-btn admin-upload-label">
+            + Rasm qo‘shish
+            <input type="file" accept="image/*" multiple hidden data-section="family-photos" data-id="${m.id}">
+          </label>
+        </div>
+      </div>
+
+      <div class="admin-family-card-bottom">
+        <div class="admin-row-actions">
+          <button type="button" class="admin-icon-btn" data-section="family" data-id="${m.id}" data-action="move-up" title="Yuqoriga">↑</button>
+          <button type="button" class="admin-icon-btn" data-section="family" data-id="${m.id}" data-action="move-down" title="Pastga">↓</button>
+          <button type="button" class="admin-icon-btn admin-icon-btn-danger" data-section="family" data-id="${m.id}" data-action="delete" title="Oila a’zosini o‘chirish">✕</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function tplAdminFamily(){
+  return `
+    <div class="admin-section">
+      <h3 class="admin-section-title">Oila a’zolarini boshqarish</h3>
+      <div class="admin-list">
+        ${draftData.family.map(m => tplFamilyMemberAdmin(m)).join('')}
+      </div>
+      <button type="button" class="admin-add-btn" data-section="family" data-action="add">+ Oila a’zosi qo‘shish</button>
+    </div>
+  `;
+}
+
+function tplAdminTimeline(){
+  return `
+    <div class="admin-section">
+      <h3 class="admin-section-title">Hayot xotiralari</h3>
+      <div class="admin-list">
+        ${draftData.timeline.map((t) => `
+          <div class="admin-row">
+            <div class="admin-row-fields">
+              <input type="text" data-section="timeline" data-id="${t.id}" data-field="title" value="${esc(t.title)}" placeholder="Sarlavha">
+              <input type="text" data-section="timeline" data-id="${t.id}" data-field="date" value="${esc(t.date || '')}" placeholder="Sana / yil (ixtiyoriy)">
+              <textarea rows="2" data-section="timeline" data-id="${t.id}" data-field="desc" placeholder="Tavsif...">${esc(t.desc || '')}</textarea>
+            </div>
+            <div class="admin-row-actions admin-row-actions-vertical">
+              <button type="button" class="admin-icon-btn" data-section="timeline" data-id="${t.id}" data-action="move-up" title="Yuqoriga">↑</button>
+              <button type="button" class="admin-icon-btn" data-section="timeline" data-id="${t.id}" data-action="move-down" title="Pastga">↓</button>
+              <button type="button" class="admin-icon-btn admin-icon-btn-danger" data-section="timeline" data-id="${t.id}" data-action="delete" title="O‘chirish">✕</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <button type="button" class="admin-add-btn" data-section="timeline" data-action="add">+ Xotira qo‘shish</button>
+    </div>
+  `;
+}
+
+/* ---------- Musiqa (background music) admin tab ---------- */
+function tplAdminMusic(){
+  const m = musicSettings;
+  const hasTrack = !!m.hasTrack;
+  const volumePercent = Math.round((typeof m.volume === 'number' ? m.volume : 0.3) * 100);
+  const isPlayingNow = !!(musicAudioEl && !musicAudioEl.paused);
+  return `
+    <div class="admin-section">
+      <h3 class="admin-section-title">Fon musiqasi</h3>
+
+      <div class="admin-field">
+        <label>Musiqa fayli</label>
+        <div class="music-file-box">
+          ${hasTrack ? `
+            <div class="music-file-info">
+              <div class="music-file-icon">${musicIconSVG}</div>
+              <div class="music-file-meta">
+                <div class="music-file-name">${esc(m.fileName || 'Musiqa fayli')}</div>
+                <div class="music-file-size">${formatFileSize(m.fileSize)}</div>
+              </div>
+            </div>
+          ` : `<p class="admin-hint-text" style="margin-top:0;">Hozircha musiqa fayli yuklanmagan.</p>`}
+          <div class="admin-row-fields-inline" style="margin-top:14px;">
+            <label class="admin-btn admin-btn-primary admin-upload-label">${hasTrack ? 'Musiqani almashtirish' : 'Musiqa yuklash'}
+              <input type="file" accept="audio/*" data-section="music" data-action="upload" hidden>
+            </label>
+            ${hasTrack ? `
+              <button type="button" class="admin-btn admin-btn-outline" data-section="music" data-action="preview-toggle">${isPlayingNow ? 'To‘xtatish' : 'Eshitib ko‘rish'}</button>
+              <button type="button" class="admin-btn admin-btn-outline" data-section="music" data-action="delete">Musiqani o‘chirish</button>
+            ` : ''}
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-grid-2">
+        <div class="admin-field"><label>Musiqa nomi</label><input type="text" data-section="music" data-field="title" value="${esc(m.title)}" placeholder="Ixtiyoriy"></div>
+        <div class="admin-field"><label>Ijrochi</label><input type="text" data-section="music" data-field="artist" value="${esc(m.artist)}" placeholder="Ixtiyoriy"></div>
+      </div>
+
+      <div class="admin-field">
+        <label>Ovoz balandligi — <span class="music-volume-value">${volumePercent}%</span></label>
+        <input type="range" min="0" max="100" step="1" data-section="music" data-field="volume" value="${volumePercent}" class="music-range">
+      </div>
+
+      <div class="admin-toggle-row">
+        <div class="admin-toggle-label">
+          <span>Takror ijro etish</span>
+          <span class="admin-hint-text" style="margin:0;">Musiqa tugagach, avtomatik qaytadan boshlanadi.</span>
+        </div>
+        <label class="music-switch">
+          <input type="checkbox" data-section="music" data-field="loop" ${m.loop ? 'checked' : ''}>
+          <span class="music-switch-track"></span>
+        </label>
+      </div>
+
+      <div class="admin-toggle-row">
+        <div class="admin-toggle-label">
+          <span>Saytda musiqani yoqish</span>
+          <span class="admin-hint-text" style="margin:0;">Yoqilganda, tashrif buyuruvchilarga musiqa taklif qilinadi.</span>
+        </div>
+        <label class="music-switch">
+          <input type="checkbox" data-section="music" data-field="enabled" ${m.enabled ? 'checked' : ''} ${hasTrack ? '' : 'disabled'}>
+          <span class="music-switch-track"></span>
+        </label>
+      </div>
+      ${!hasTrack ? `<p class="admin-hint-text">Musiqani yoqish uchun avval fayl yuklang.</p>` : ''}
+    </div>
+  `;
+}
+
+function renderAdminActiveTab(){
+  const scrollPos = adminContent.scrollTop;
+  switch(activeAdminTab){
+    case 'profile': adminContent.innerHTML = tplAdminProfile(); break;
+    case 'portrait': adminContent.innerHTML = tplAdminPortrait(); break;
+    case 'values': adminContent.innerHTML = tplAdminValues(); break;
+    case 'gallery': adminContent.innerHTML = tplAdminGallery(); break;
+    case 'family': adminContent.innerHTML = tplAdminFamily(); break;
+    case 'timeline': adminContent.innerHTML = tplAdminTimeline(); break;
+    case 'music': adminContent.innerHTML = tplAdminMusic(); break;
+    default: adminContent.innerHTML = '';
+  }
+  adminContent.scrollTop = scrollPos;
+}
+
+/* ============================================================
+   ADMIN — DIRTY STATE
+   ============================================================ */
+function markDirty(){ dirty = true; updateDirtyIndicator(); }
+function updateDirtyIndicator(){ adminDirtyIndicator.hidden = !dirty; }
+
+/* ============================================================
+   ADMIN — OPEN / CLOSE
+   ============================================================ */
+function openAdmin(){
+  draftData = deepClone(siteData);
+  dirty = false;
+  activeAdminTab = 'profile';
+  previousFocusEl = document.activeElement;
+
+  document.querySelectorAll('.admin-tab').forEach(x => x.classList.toggle('active', x.dataset.tab === 'profile'));
+  renderAdminActiveTab();
+  updateDirtyIndicator();
+
+  adminOverlay.classList.add('open');
+  adminOverlay.setAttribute('aria-hidden', 'false');
+  adminIsOpen = true;
+  refreshBodyScrollLock();
+
+  setTimeout(() => {
+    const closeBtn = document.getElementById('adminCloseBtn');
+    if(closeBtn) closeBtn.focus();
+  }, 60);
+}
+function closeAdminUI(){
+  adminOverlay.classList.remove('open');
+  adminOverlay.setAttribute('aria-hidden', 'true');
+  adminIsOpen = false;
+  if(musicPreviewActive && musicAudioEl){
+    clearMusicFade();
+    try{ musicAudioEl.pause(); }catch(e){ /* ignore */ }
+    musicAudioEl.volume = musicSettings.volume;
+    musicPreviewActive = false;
+    updateFloatingMusicControlUI();
+  }
+  refreshBodyScrollLock();
+  if(previousFocusEl && typeof previousFocusEl.focus === 'function'){
+    try{ previousFocusEl.focus(); }catch(e){ /* ignore */ }
+  }
+}
+function requestCloseAdmin(){
+  if(dirty){
+    openConfirm('Saqlanmagan o‘zgarishlar mavjud. Ularni bekor qilib chiqmoqchimisiz?', 'Chiqish', () => {
+      draftData = null;
+      dirty = false;
+      renderAll(siteData);
+      closeAdminUI();
+    });
+  } else {
+    closeAdminUI();
+  }
+}
+
+document.getElementById('adminCloseBtn').addEventListener('click', requestCloseAdmin);
+adminOverlay.addEventListener('click', (e) => { if(e.target === adminOverlay) requestCloseAdmin(); });
+
+/* ============================================================
+   ADMIN — TABS
+   ============================================================ */
+adminTabsEl.addEventListener('click', (e) => {
+  const btn = e.target.closest('.admin-tab');
+  if(!btn) return;
+  activeAdminTab = btn.dataset.tab;
+  document.querySelectorAll('.admin-tab').forEach(x => x.classList.toggle('active', x === btn));
+  renderAdminActiveTab();
+});
+
+/* ============================================================
+   ADMIN — SAVE / RESET (async with API)
+   ============================================================ */
+document.getElementById('adminSaveBtn').addEventListener('click', async () => {
+  const candidate = deepClone(draftData);
+  const ok = await trySaveData(candidate);
+  if(ok){
+    siteData = candidate;
+    draftData = deepClone(siteData);
+    dirty = false;
+    updateDirtyIndicator();
+    renderAll(siteData);
+    showToast('O‘zgarishlar muvaffaqiyatli saqlandi');
+  }
+});
+
+document.getElementById('adminResetBtn').addEventListener('click', () => {
+  openConfirm('Butun sayt standart holatga qaytariladi. Bu amalni ortga qaytarib bo‘lmaydi. Davom etasizmi?', 'Qayta tiklash', async () => {
+    const defaults = getDefaultData();
+    const ok = await trySaveData(defaults);
+    if(ok){
+      siteData = defaults;
+      draftData = deepClone(siteData);
+      dirty = false;
+      updateDirtyIndicator();
+      renderAll(siteData);
+      renderAdminActiveTab();
+      showToast('Sayt standart holatga muvaffaqiyatli qaytarildi');
+    }
+  });
+});
+
+/* ============================================================
+   ADMIN — MULTIPLE FAMILY PHOTO PROCESSING (sequential, safe)
+   ============================================================ */
+async function handleMultipleFamilyPhotos(files, memberId){
+  const member = draftData.family.find(f => f.id === memberId);
+  if(!member) return;
+  let addedCount = 0;
+  for(const file of files){
+    try{
+      const dataUrl = await processImage(file, 1000, 0.82);
+      const photoId = generateId();
+      member.photos.push({ id: photoId, src: dataUrl, caption: '' });
+      if(!member.coverPhotoId) member.coverPhotoId = photoId;
+      addedCount++;
+    }catch(e){
+      /* skip invalid files silently, continue with remaining */
+    }
+  }
+  if(addedCount){
+    markDirty();
+    renderFamilySection(draftData);
+    renderAdminActiveTab();
+    showToast(addedCount + ' ta rasm qo‘shildi');
+  } else {
+    showToast('Rasmlarni yuklashda xatolik yuz berdi.', 'error');
+  }
+}
+
+/* ============================================================
+   ADMIN — EVENT DELEGATION (attached once, avoids duplicate listeners)
+   ============================================================ */
+adminContent.addEventListener('input', (e) => {
+  const el = e.target;
+  const section = el.dataset.section;
+  const field = el.dataset.field;
+  if(!section) return;
+
+  if(section === 'profile' && field){
+    draftData.profile[field] = el.value;
+    markDirty();
+    renderProfile(draftData);
+  } else if(section === 'quote'){
+    draftData.quote = el.value;
+    markDirty();
+    renderQuoteSection(draftData);
+  } else if(section === 'values' && field){
+    const idx = parseInt(el.dataset.index, 10);
+    if(draftData.values[idx]){
+      draftData.values[idx][field] = el.value;
+      markDirty();
+      renderValuesSection(draftData);
+    }
+  } else if(section === 'gallery' && field){
+    const item = draftData.gallery.find(g => g.id === el.dataset.id);
+    if(item){
+      item[field] = el.value;
+      markDirty();
+      renderGallerySection(draftData);
+    }
+  } else if(section === 'family' && field){
+    const item = draftData.family.find(f => f.id === el.dataset.id);
+    if(item){
+      item[field] = el.value;
+      markDirty();
+      renderFamilySection(draftData);
+    }
+  } else if(section === 'family-photo-caption'){
+    const member = draftData.family.find(f => f.id === el.dataset.member);
+    if(member){
+      const photo = member.photos.find(p => p.id === el.dataset.photo);
+      if(photo){
+        photo.caption = el.value;
+        markDirty();
+        renderFamilySection(draftData);
+      }
+    }
+  } else if(section === 'timeline' && field){
+    const item = draftData.timeline.find(t => t.id === el.dataset.id);
+    if(item){
+      item[field] = el.value;
+      markDirty();
+      renderTimelineSection(draftData);
+    }
+  } else if(section === 'music' && field){
+    if(field === 'volume'){
+      const vol = Math.min(100, Math.max(0, parseInt(el.value, 10) || 0)) / 100;
+      musicSettings.volume = vol;
+      saveMusicSettingsToStorage();
+      if(musicAudioEl && !musicAudioEl.paused && !musicFadeTimer){
+        musicAudioEl.volume = vol;
+      }
+      const wrap = el.closest('.admin-field');
+      const pctEl = wrap ? wrap.querySelector('.music-volume-value') : null;
+      if(pctEl) pctEl.textContent = Math.round(vol * 100) + '%';
+    } else {
+      musicSettings[field] = el.value;
+      saveMusicSettingsToStorage();
+      if(field === 'title' || field === 'artist') updateNowPlayingInfo();
+    }
+  }
+});
+
+adminContent.addEventListener('change', (e) => {
+  const el = e.target;
+
+  if(el.type === 'checkbox' && el.dataset.section === 'music' && el.dataset.field){
+    const field = el.dataset.field;
+    musicSettings[field] = el.checked;
+    saveMusicSettingsToStorage();
+    if(field === 'loop' && musicAudioEl){ musicAudioEl.loop = el.checked; }
+    if(field === 'enabled'){ initMusicPublicUI(); }
+    renderAdminActiveTab();
+    return;
+  }
+
+  if(el.type !== 'file') return;
+  const section = el.dataset.section;
+  const id = el.dataset.id;
+
+  if(section === 'music' && el.dataset.action === 'upload'){
+    const file = el.files && el.files[0];
+    el.value = '';
+    if(!file) return;
+    if(!file.type || !file.type.startsWith('audio/')){
+      showToast('Tanlangan faylni musiqa sifatida ochib bo‘lmadi.', 'error');
+      return;
+    }
+    handleMusicUpload(file);
+    return;
+  }
+
+  if(section === 'family-photos'){
+    const files = Array.from(el.files || []);
+    if(files.length){ handleMultipleFamilyPhotos(files, id); }
+    el.value = '';
+    return;
+  }
+
+  const file = el.files && el.files[0];
+  if(!file) return;
+  const maxDim = section === 'gallery' ? 1400 : (section === 'aboutPhoto' ? 1200 : 700);
+  const quality = section === 'gallery' ? 0.82 : 0.85;
+
+  processImage(file, maxDim, quality).then(dataUrl => {
+    if(section === 'portrait'){
+      draftData.profile.portrait = dataUrl;
+      renderProfile(draftData);
+    } else if(section === 'aboutPhoto'){
+      draftData.profile.aboutPhoto = dataUrl;
+      renderProfile(draftData);
+    } else if(section === 'gallery'){
+      const item = draftData.gallery.find(g => g.id === id);
+      if(item) item.image = dataUrl;
+      renderGallerySection(draftData);
+    }
+    markDirty();
+    renderAdminActiveTab();
+    showToast('Rasm muvaffaqiyatli yangilandi');
+  }).catch(() => {
+    showToast('Rasmni yuklashda xatolik yuz berdi. Boshqa faylni tanlab ko‘ring.', 'error');
+  });
+
+  el.value = '';
+});
+
+adminContent.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-action]');
+  if(!btn) return;
+  const action = btn.dataset.action;
+  const section = btn.dataset.section;
+  const id = btn.dataset.id;
+  const idx = btn.dataset.index !== undefined ? parseInt(btn.dataset.index, 10) : null;
+
+  if(section === 'portrait' && action === 'remove'){
+    draftData.profile.portrait = '';
+    markDirty();
+    renderProfile(draftData);
+    renderAdminActiveTab();
+    return;
+  }
+
+  if(section === 'aboutPhoto' && action === 'remove'){
+    draftData.profile.aboutPhoto = '';
+    markDirty();
+    renderProfile(draftData);
+    renderAdminActiveTab();
+    return;
+  }
+
+  if(section === 'values'){
+    if(action === 'add'){
+      draftData.values.push({ icon: '✨', name: 'Yangi qadriyat' });
+      markDirty(); renderValuesSection(draftData); renderAdminActiveTab();
+      showToast('Qadriyat qo‘shildi');
+    } else if(action === 'delete'){
+      draftData.values.splice(idx, 1);
+      markDirty(); renderValuesSection(draftData); renderAdminActiveTab();
+      showToast('Ma’lumot o‘chirildi');
+    } else if(action === 'move-up' && idx > 0){
+      swapArr(draftData.values, idx, idx - 1);
+      markDirty(); renderValuesSection(draftData); renderAdminActiveTab();
+    } else if(action === 'move-down' && idx < draftData.values.length - 1){
+      swapArr(draftData.values, idx, idx + 1);
+      markDirty(); renderValuesSection(draftData); renderAdminActiveTab();
+    }
+  } else if(section === 'gallery'){
+    if(action === 'add'){
+      draftData.gallery.push({ id: generateId(), image: '', caption: 'Yangi xotira' });
+      markDirty(); renderGallerySection(draftData); renderAdminActiveTab();
+      showToast('Xotira qo‘shildi');
+    } else if(action === 'delete'){
+      openConfirm('Ushbu xotirani o‘chirmoqchimisiz?', 'O‘chirish', () => {
+        const i = draftData.gallery.findIndex(g => g.id === id);
+        if(i > -1) draftData.gallery.splice(i, 1);
+        markDirty(); renderGallerySection(draftData); renderAdminActiveTab();
+        showToast('Ma’lumot o‘chirildi');
+      });
+    } else if(action === 'remove-image'){
+      const item = draftData.gallery.find(g => g.id === id);
+      if(item) item.image = '';
+      markDirty(); renderGallerySection(draftData); renderAdminActiveTab();
+    } else if(action === 'move-up' || action === 'move-down'){
+      moveArrById(draftData.gallery, id, action === 'move-up' ? -1 : 1);
+      markDirty(); renderGallerySection(draftData); renderAdminActiveTab();
+    }
+  } else if(section === 'family'){
+    if(action === 'add'){
+      draftData.family.push({
+        id: generateId(), name: '', relationship: 'Yaqin inson', relationToBirthdayPerson: '',
+        description: '', birthDate: '', photos: [], coverPhotoId: ''
+      });
+      markDirty(); renderFamilySection(draftData); renderAdminActiveTab();
+      showToast('Oila a’zosi qo‘shildi');
+    } else if(action === 'delete'){
+      openConfirm('Ushbu oila a’zosini o‘chirmoqchimisiz?', 'O‘chirish', () => {
+        const i = draftData.family.findIndex(f => f.id === id);
+        if(i > -1) draftData.family.splice(i, 1);
+        markDirty(); renderFamilySection(draftData); renderAdminActiveTab();
+        showToast('Ma’lumot o‘chirildi');
+      });
+    } else if(action === 'move-up' || action === 'move-down'){
+      moveArrById(draftData.family, id, action === 'move-up' ? -1 : 1);
+      markDirty(); renderFamilySection(draftData); renderAdminActiveTab();
+    }
+  } else if(section === 'family-photo'){
+    const member = draftData.family.find(f => f.id === btn.dataset.member);
+    if(!member) return;
+    const photoId = btn.dataset.photo;
+    if(action === 'set-cover'){
+      member.coverPhotoId = photoId;
+      markDirty(); renderFamilySection(draftData); renderAdminActiveTab();
+    } else if(action === 'remove'){
+      openConfirm('Ushbu rasmni o‘chirmoqchimisiz?', 'O‘chirish', () => {
+        const pIdx = member.photos.findIndex(p => p.id === photoId);
+        if(pIdx > -1) member.photos.splice(pIdx, 1);
+        if(member.coverPhotoId === photoId){
+          member.coverPhotoId = member.photos.length ? member.photos[0].id : '';
+        }
+        markDirty(); renderFamilySection(draftData); renderAdminActiveTab();
+        showToast('Rasm o‘chirildi');
+      });
+    } else if(action === 'move-left' || action === 'move-right'){
+      const pIdx = member.photos.findIndex(p => p.id === photoId);
+      const dir = action === 'move-left' ? -1 : 1;
+      const j = pIdx + dir;
+      if(pIdx > -1 && j >= 0 && j < member.photos.length){
+        swapArr(member.photos, pIdx, j);
+        markDirty(); renderFamilySection(draftData); renderAdminActiveTab();
+      }
+    }
+  } else if(section === 'timeline'){
+    if(action === 'add'){
+      draftData.timeline.push({ id: generateId(), title: 'Yangi xotira', desc: '', date: '' });
+      markDirty(); renderTimelineSection(draftData); renderAdminActiveTab();
+      showToast('Xotira qo‘shildi');
+    } else if(action === 'delete'){
+      openConfirm('Ushbu voqeani o‘chirmoqchimisiz?', 'O‘chirish', () => {
+        const i = draftData.timeline.findIndex(t => t.id === id);
+        if(i > -1) draftData.timeline.splice(i, 1);
+        markDirty(); renderTimelineSection(draftData); renderAdminActiveTab();
+        showToast('Ma’lumot o‘chirildi');
+      });
+    } else if(action === 'move-up' || action === 'move-down'){
+      moveArrById(draftData.timeline, id, action === 'move-up' ? -1 : 1);
+      markDirty(); renderTimelineSection(draftData); renderAdminActiveTab();
+    }
+  } else if(section === 'music'){
+    if(action === 'preview-toggle'){
+      toggleMusicPreview();
+    } else if(action === 'delete'){
+      openConfirm('Fon musiqasini o‘chirmoqchimisiz?', 'O‘chirish', () => {
+        deleteMusicTrack();
+      });
+    }
+  }
+});
+
+/* ============================================================
+   FAMILY PROFILE MODAL (public, dynamic, reusable)
+   ============================================================ */
+const familyContainer = document.getElementById('familyContainer');
+const familyModalOverlay = document.getElementById('familyModalOverlay');
+const familyModalClose = document.getElementById('familyModalClose');
+const familyModalCover = document.getElementById('familyModalCover');
+const familyModalName = document.getElementById('familyModalName');
+const familyModalTags = document.getElementById('familyModalTags');
+const familyModalDesc = document.getElementById('familyModalDesc');
+const familyModalGallery = document.getElementById('familyModalGallery');
+
+familyContainer.addEventListener('click', (e) => {
+  const card = e.target.closest('.family-card');
+  if(card) openFamilyModal(card.dataset.familyId);
+});
+familyContainer.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' || e.key === ' '){
+    const card = e.target.closest('.family-card');
+    if(card){ e.preventDefault(); openFamilyModal(card.dataset.familyId); }
+  }
+});
+
+function openFamilyModal(memberId){
+  const member = siteData.family.find(f => f.id === memberId);
+  if(!member) return;
+  currentFamilyMember = member;
+  familyModalPreviousFocus = document.activeElement;
+
+  populateFamilyModal(member);
+
+  familyModalOverlay.classList.add('open');
+  familyModalOverlay.setAttribute('aria-hidden', 'false');
+  familyModalIsOpen = true;
+  refreshBodyScrollLock();
+
+  setTimeout(() => familyModalClose.focus(), 60);
+}
+
+function populateFamilyModal(member){
+  const displayName = (member.name && member.name.trim()) ? member.name.trim() : member.relationship;
+  const cover = getCoverPhoto(member);
+
+  familyModalCover.innerHTML = cover ? `<img src="${cover.src}" alt="${esc(displayName)}">` : personIconSVG;
+  familyModalName.textContent = displayName;
+
+  let tagsHtml = '';
+  if(member.name && member.name.trim() && member.relationship){
+    tagsHtml += `<div class="family-modal-tag"><strong>Qarindoshligi</strong>${esc(member.relationship)}</div>`;
+  }
+  if(member.relationToBirthdayPerson && member.relationToBirthdayPerson.trim()){
+    tagsHtml += `<div class="family-modal-tag"><strong>Tug‘ilgan kun egasiga kim bo‘ladi?</strong>${esc(member.relationToBirthdayPerson)}</div>`;
+  }
+  if(member.birthDate && member.birthDate.trim()){
+    tagsHtml += `<div class="family-modal-tag"><strong>Tug‘ilgan sana</strong>${esc(member.birthDate)}</div>`;
+  }
+  familyModalTags.innerHTML = tagsHtml;
+
+  if(member.description && member.description.trim()){
+    familyModalDesc.textContent = member.description;
+    familyModalDesc.style.display = '';
+  } else {
+    familyModalDesc.style.display = 'none';
+  }
+
+  renderFamilyModalGallery(member.photos);
+}
+
+function renderFamilyModalGallery(photos){
+  if(!photos.length){
+    familyModalGallery.innerHTML = `<p style="text-align:center;color:var(--text-soft);font-size:14px;">Hozircha rasmlar qo‘shilmagan.</p>`;
+    familyModalGallery.className = 'family-modal-gallery';
+    return;
+  }
+  const count = photos.length;
+  let cls = 'fg-many';
+  if(count === 1) cls = 'fg-1';
+  else if(count === 2) cls = 'fg-2';
+  else if(count === 3) cls = 'fg-3';
+  else if(count === 4) cls = 'fg-4';
+  familyModalGallery.className = 'family-modal-gallery ' + cls;
+  familyModalGallery.innerHTML = photos.map((p, i) => `
+    <div class="fg-item" data-photo-index="${i}">
+      <img src="${p.src}" alt="">
+      ${(p.caption && p.caption.trim()) ? `<div class="fg-item-caption">${esc(p.caption)}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function closeFamilyModal(){
+  familyModalOverlay.classList.remove('open');
+  familyModalOverlay.setAttribute('aria-hidden', 'true');
+  familyModalIsOpen = false;
+  refreshBodyScrollLock();
+  if(familyModalPreviousFocus && typeof familyModalPreviousFocus.focus === 'function'){
+    try{ familyModalPreviousFocus.focus(); }catch(e){ /* ignore */ }
+  }
+}
+
+familyModalClose.addEventListener('click', closeFamilyModal);
+familyModalOverlay.addEventListener('click', (e) => { if(e.target === familyModalOverlay) closeFamilyModal(); });
+
+familyModalGallery.addEventListener('click', (e) => {
+  const item = e.target.closest('.fg-item');
+  if(item && currentFamilyMember){
+    openFamilyLightbox(parseInt(item.dataset.photoIndex, 10));
+  }
+});
+
+/* ============================================================
+   FAMILY INNER PHOTO LIGHTBOX (scoped to current member's photos)
+   ============================================================ */
+const familyLightbox = document.getElementById('familyLightbox');
+const familyLightboxMedia = document.getElementById('familyLightboxMedia');
+const familyLightboxCaption = document.getElementById('familyLightboxCaption');
+const familyLightboxCounter = document.getElementById('familyLightboxCounter');
+const familyLbClose = document.getElementById('familyLbClose');
+const familyLbPrev = document.getElementById('familyLbPrev');
+const familyLbNext = document.getElementById('familyLbNext');
+
+function openFamilyLightbox(index){
+  if(!currentFamilyMember || !currentFamilyMember.photos.length) return;
+  familyLightboxIndex = index;
+  updateFamilyLightbox();
+  familyLightbox.classList.add('open');
+  familyLightboxIsOpen = true;
+  refreshBodyScrollLock();
+}
+function closeFamilyLightboxFn(){
+  familyLightbox.classList.remove('open');
+  familyLightboxIsOpen = false;
+  refreshBodyScrollLock();
+}
+function updateFamilyLightbox(){
+  if(!currentFamilyMember) return;
+  const photos = currentFamilyMember.photos;
+  const p = photos[familyLightboxIndex];
+  if(!p) return;
+  familyLightboxMedia.innerHTML = `<img src="${p.src}" alt="">`;
+  if(p.caption && p.caption.trim()){
+    familyLightboxCaption.textContent = p.caption;
+    familyLightboxCaption.style.display = '';
+  } else {
+    familyLightboxCaption.style.display = 'none';
+  }
+  familyLightboxCounter.textContent = `${familyLightboxIndex + 1} / ${photos.length}`;
+}
+function familyLbNextFn(){
+  if(!currentFamilyMember) return;
+  const photos = currentFamilyMember.photos;
+  familyLightboxIndex = (familyLightboxIndex + 1) % photos.length;
+  updateFamilyLightbox();
+}
+function familyLbPrevFn(){
+  if(!currentFamilyMember) return;
+  const photos = currentFamilyMember.photos;
+  familyLightboxIndex = (familyLightboxIndex - 1 + photos.length) % photos.length;
+  updateFamilyLightbox();
+}
+
+familyLbClose.addEventListener('click', closeFamilyLightboxFn);
+familyLbNext.addEventListener('click', familyLbNextFn);
+familyLbPrev.addEventListener('click', familyLbPrevFn);
+familyLightbox.addEventListener('click', (e) => { if(e.target === familyLightbox) closeFamilyLightboxFn(); });
+
+let famTouchStartX = 0, famTouchEndX = 0;
+familyLightbox.addEventListener('touchstart', (e) => { famTouchStartX = e.changedTouches[0].screenX; }, { passive: true });
+familyLightbox.addEventListener('touchend', (e) => {
+  famTouchEndX = e.changedTouches[0].screenX;
+  const delta = famTouchEndX - famTouchStartX;
+  if(Math.abs(delta) > 50){ delta > 0 ? familyLbPrevFn() : familyLbNextFn(); }
+}, { passive: true });
+
+/* ============================================================
+   INITIAL RENDER — async load data from API
+   ============================================================ */
+(async function init() {
+  siteData = await loadData();
+  document.getElementById('year').textContent = new Date().getFullYear();
+  renderAll(siteData);
+  initMusicPublicUI();
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+})();
+
+/* ---------- LOADING SCREEN ---------- */
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  setTimeout(() => loader.classList.add('hide'), 500);
+});
+
+/* ---------- THEME TOGGLE ---------- */
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const rootEl = document.documentElement;
+const moonPath = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>`;
+const sunPaths = `
+  <circle cx="12" cy="12" r="5"></circle>
+  <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+  <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+`;
+function applyTheme(theme){
+  if(theme === 'dark'){ rootEl.setAttribute('data-theme', 'dark'); themeIcon.innerHTML = moonPath; }
+  else { rootEl.removeAttribute('data-theme'); themeIcon.innerHTML = sunPaths; }
+  localStorage.setItem('tumajon-theme', theme);
+}
+const savedTheme = localStorage.getItem('tumajon-theme');
+if(savedTheme){ applyTheme(savedTheme); }
+else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){ applyTheme('dark'); }
+else { applyTheme('light'); }
+themeToggle.addEventListener('click', () => {
+  const current = rootEl.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+/* ---------- NAVBAR SCROLL STATE ---------- */
+const navbar = document.getElementById('navbar');
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  backToTop.classList.toggle('show', window.scrollY > 500);
+}, { passive: true });
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ---------- MOBILE MENU ---------- */
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const closeMenuBtn = document.getElementById('closeMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+function openMenu(){ mobileMenu.classList.add('open'); menuOverlay.classList.add('show'); document.body.style.overflow = 'hidden'; }
+function closeMenu(){ mobileMenu.classList.remove('open'); menuOverlay.classList.remove('show'); refreshBodyScrollLock(); }
+hamburgerBtn.addEventListener('click', openMenu);
+closeMenuBtn.addEventListener('click', closeMenu);
+menuOverlay.addEventListener('click', closeMenu);
+document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', closeMenu));
+
+/* ---------- SMOOTH SCROLL ---------- */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    const targetId = this.getAttribute('href');
+    if(targetId.length > 1){
+      const target = document.querySelector(targetId);
+      if(target){
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 80;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+/* ---------- ACTIVE NAV LINK ---------- */
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute('id');
+    const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+    if(entry.isIntersecting){
+      navAnchors.forEach(a => a.classList.remove('active'));
+      if(link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+sections.forEach(sec => navObserver.observe(sec));
+
+/* ============================================================
+   MAIN GALLERY CLICK DELEGATION + LIGHTBOX
+   ============================================================ */
+const galleryGrid = document.getElementById('galleryGrid');
+const lightbox = document.getElementById('lightbox');
+const lightboxMedia = document.getElementById('lightboxMedia');
+const lightboxCaption = document.getElementById('lightboxCaption');
+const lbClose = document.getElementById('lbClose');
+const lbPrev = document.getElementById('lbPrev');
+const lbNext = document.getElementById('lbNext');
+
+galleryGrid.addEventListener('click', (e) => {
+  const item = e.target.closest('.gallery-item');
+  if(item) openLightbox(parseInt(item.getAttribute('data-index'), 10));
+});
+
+function openLightbox(index){
+  currentLightboxIndex = index;
+  updateLightbox();
+  lightbox.classList.add('open');
+  lightboxIsOpen = true;
+  refreshBodyScrollLock();
+}
+function closeLightbox(){
+  lightbox.classList.remove('open');
+  lightboxIsOpen = false;
+  refreshBodyScrollLock();
+}
+function updateLightbox(){
+  const item = currentGalleryData[currentLightboxIndex];
+  if(!item) return;
+  lightboxMedia.innerHTML = item.image ? `<img src="${item.image}" alt="${escapeHtml(item.caption || '')}">` : galleryIconSVG;
+  lightboxCaption.textContent = item.caption || '';
+}
+function showNext(){ if(!currentGalleryData.length) return; currentLightboxIndex = (currentLightboxIndex + 1) % currentGalleryData.length; updateLightbox(); }
+function showPrev(){ if(!currentGalleryData.length) return; currentLightboxIndex = (currentLightboxIndex - 1 + currentGalleryData.length) % currentGalleryData.length; updateLightbox(); }
+
+lbClose.addEventListener('click', closeLightbox);
+lbNext.addEventListener('click', showNext);
+lbPrev.addEventListener('click', showPrev);
+lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+
+let touchStartX = 0, touchEndX = 0;
+lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+lightbox.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  const delta = touchEndX - touchStartX;
+  if(Math.abs(delta) > 50){ delta > 0 ? showPrev() : showNext(); }
+}, { passive: true });
+
+/* ============================================================
+   GLOBAL KEYBOARD HANDLING
+   Priority for ESC: confirm > family-lightbox > admin > family-modal > gallery-lightbox
+   ============================================================ */
+const ADMIN_CODE = 'admin26';
+let keyBuffer = '';
+let bufferResetTimeout = null;
+
+document.addEventListener('keydown', (e) => {
+  const target = e.target;
+  const tag = target && target.tagName ? target.tagName.toLowerCase() : '';
+  const isEditable = tag === 'input' || tag === 'textarea' || tag === 'select' || (target && target.isContentEditable);
+
+  if(e.key === 'Escape'){
+    if(confirmOverlay.classList.contains('open')){ closeConfirmModal(); return; }
+    if(musicWelcomeIsOpen){
+      try{ sessionStorage.setItem(MUSIC_SESSION_CHOICE_KEY, 'declined'); }catch(err){ /* ignore */ }
+      closeMusicWelcomeModal();
+      return;
+    }
+    if(familyLightboxIsOpen){ closeFamilyLightboxFn(); return; }
+    if(adminIsOpen){ requestCloseAdmin(); return; }
+    if(familyModalIsOpen){ closeFamilyModal(); return; }
+    if(lightboxIsOpen){ closeLightbox(); return; }
+    return;
+  }
+
+  if(familyLightboxIsOpen && !isEditable){
+    if(e.key === 'ArrowRight'){ familyLbNextFn(); return; }
+    if(e.key === 'ArrowLeft'){ familyLbPrevFn(); return; }
+  } else if(lightboxIsOpen && !isEditable){
+    if(e.key === 'ArrowRight'){ showNext(); return; }
+    if(e.key === 'ArrowLeft'){ showPrev(); return; }
+  }
+
+  if(isEditable){ keyBuffer = ''; clearTimeout(bufferResetTimeout); return; }
+  if(e.ctrlKey || e.altKey || e.metaKey) return;
+
+  if(e.key && e.key.length === 1){
+    keyBuffer += e.key.toLowerCase();
+    if(keyBuffer.length > ADMIN_CODE.length) keyBuffer = keyBuffer.slice(-ADMIN_CODE.length);
+
+    clearTimeout(bufferResetTimeout);
+    bufferResetTimeout = setTimeout(() => { keyBuffer = ''; }, 3000);
+
+    if(keyBuffer === ADMIN_CODE){
+      keyBuffer = '';
+      if(!adminIsOpen) openAdmin();
+    }
+  }
+});
+
+/* ============================================================
+   RESPONSIVE GUARD
+   ============================================================ */
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 768) closeMenu();
+});
+</script>
+</body>
+</html>
