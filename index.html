@@ -1056,8 +1056,6 @@ input[type="range"].music-range::-moz-range-track{ height:6px; border-radius:999
 /* ============================================================
    CONSTANTS & SHARED SVG ICONS
    ============================================================ */
-const STORAGE_KEY = 'tumajonSiteData_v3';
-
 const personIconSVG = `<svg fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg>`;
 const galleryIconSVG = `<svg fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><path d="M21 15l-5-5L5 21"></path></svg>`;
 const heartIconSVG = `<svg fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.5-8 11-8 11z"></path></svg>`;
@@ -1209,14 +1207,20 @@ function normalizeFamilyMember(m){
 }
 
 /* ============================================================
-   LOAD / SAVE (API-based) — no localStorage for site data
+   LOAD / SAVE — JSONBin API (no localStorage for site data)
    ============================================================ */
+const JSONBIN_BIN_ID = '6a85cccff5f4af5e29292f07';
+const JSONBIN_ACCESS_KEY = '$2a$10$1nvuhzkSOZ5kMyALv3IIge5L5CdO4X8CQI7gpkm1190od4p4kNPuq';
+
 async function loadData(){
   const defaults = getDefaultData();
-  try {
-    const response = await fetch('/api/get-data');
+  try{
+    const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`, {
+      headers: { 'X-Access-Key': JSONBIN_ACCESS_KEY }
+    });
     if (!response.ok) throw new Error('Server xatosi');
-    const data = await response.json();
+    const json = await response.json();
+    const data = json.record || {};
     return {
       profile: Object.assign({}, defaults.profile, (data.profile && typeof data.profile === 'object') ? data.profile : {}),
       values: Array.isArray(data.values) && data.values.length ? data.values : defaults.values,
@@ -1225,23 +1229,26 @@ async function loadData(){
       timeline: Array.isArray(data.timeline) ? data.timeline : defaults.timeline,
       quote: typeof data.quote === 'string' ? data.quote : defaults.quote
     };
-  } catch (e) {
+  } catch(e){
     console.error('Ma\'lumotlarni yuklab bo‘lmadi, standart qiymatlar ishlatiladi.', e);
     return defaults;
   }
 }
 
 async function trySaveData(data){
-  try {
-    const response = await fetch('/api/save-data', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+  try{
+    const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Key': JSONBIN_ACCESS_KEY
+      },
       body: JSON.stringify(data)
     });
     if (!response.ok) throw new Error('Server xatosi');
     return true;
-  } catch (e) {
-    showToast('Ma\'lumotlarni serverga saqlashda xatolik yuz berdi. Iltimos, internet aloqasini tekshiring.', 'error');
+  } catch(e){
+    showToast('Ma\'lumotlarni saqlashda xatolik yuz berdi. Iltimos, internet aloqasini tekshiring.', 'error');
     return false;
   }
 }
@@ -2746,7 +2753,7 @@ familyLightbox.addEventListener('touchend', (e) => {
 }, { passive: true });
 
 /* ============================================================
-   INITIAL RENDER — async load data from API
+   INITIAL RENDER — async load data from JSONBin
    ============================================================ */
 (async function init() {
   siteData = await loadData();
